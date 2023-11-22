@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+import Home from "./pages/Home";
+import { SignIn } from "./components/SignIn";
+import { SignUp } from "./components/SignUp";
+import DashboardLayout from "./layout/DashboardLayout";
+import Dashboard from "./pages/dasboard/Dashboard";
 
+const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 
 function App() {
   const [users, setUsers] = useState({});
@@ -32,22 +38,21 @@ function App() {
   }, []);
   console.log(users);
   return (
-    <div className="flex items-center justify-center h-full ">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-        culpa.
-        {/* <Login /> */}
-      </p>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" index element={<Home />} />
+          <Route path="/sign-in" index element={<SignIn />} />
+          <Route path="/sign-up" index element={<SignUp />} />
 
-      <div id="loginBtn"></div>
-    </div>
+          <Route path="" element={<DashboardLayout />}>
+            <Route path="/dashboard" index element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </div>
+      {/* <div id="loginBtn"></div> */}
+    </Router>
   );
 }
-
-
-
-
-
-
 
 export default App;
