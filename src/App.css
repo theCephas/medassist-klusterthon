@@ -1,0 +1,91 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Lora:wght@400;500;600&display=swap");
+
+/* #CAE9FF, #CAE9FF00 */
+
+body {
+  @apply font-inter antialiased text-base;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-lora text-font leading-[125%];
+}
+
+section,
+div {
+  @apply relative;
+}
+
+/* SIGN UP */
+
+.sign-up {
+  @apply w-full h-screen flex flex-col justify-between 
+  
+  md:flex-row;
+}
+
+.welcome {
+  @apply w-full flex justify-center items-center bg-grad bg-no-repeat bg-bottom bg-cover p-5
+  
+  md:w-2/5;
+}
+
+.welcome-box {
+  @apply w-full max-w-[350px] p-8 bg-white bg-opacity-80 backdrop-blur-lg rounded-lg;
+}
+
+.welcome-title {
+  @apply text-font font-semibold mb-2 text-xl;
+}
+
+.welcome-text {
+  @apply text-primary;
+}
+
+.form-heading {
+  @apply mb-4;
+}
+
+.form-title {
+  @apply text-center font-bold text-2xl mb-0;
+}
+
+.form-text {
+  @apply text-center mb-6;
+}
+
+.sign-up-form {
+  @apply w-full bg-white flex flex-col justify-center items-center pt-4 pb-8
+  
+  md:w-[60%];
+}
+
+#form-signup {
+  @apply w-full max-w-[500px] px-8 sm:w-full;
+}
+
+.input-field {
+  @apply w-full mb-5;
+}
+
+.input-field label {
+  @apply font-medium font-lora mb-2 inline-block;
+}
+
+.input-field input {
+  @apply w-full border border-opacity-40 border-font px-4 py-2 rounded-md placeholder:font-inter placeholder:text-font placeholder:text-sm;
+}
+
+.divider {
+  @apply flex justify-center gap-3 text-sm items-center uppercase text-center 
+  
+  before:inline-block before:flex-grow-[1] before:w-[40%] before:h-[1px] before:bg-font before:bg-opacity-50
+  after:inline-block after:flex-grow-[1] after:w-[40%] after:h-[1px] after:bg-font  after:bg-opacity-50;
+}
+
+.hide-pass {
+  @apply absolute right-3 bottom-3;
+}

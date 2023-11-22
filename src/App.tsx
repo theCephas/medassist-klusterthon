@@ -3,6 +3,7 @@ import "./App.css";
 import { jwtDecode } from "jwt-decode";
 const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 
+
 function App() {
   const [users, setUsers] = useState({});
   //@ts-expect-error this is an auth type check
@@ -27,7 +28,7 @@ function App() {
       }
     );
     //@ts-expect-error this is an auth type check
-    window.google.account.id.prompt();
+    window.google.account?.id.prompt();
   }, []);
   console.log(users);
   return (
@@ -42,5 +43,11 @@ function App() {
     </div>
   );
 }
+
+
+
+
+
+
 
 export default App;
