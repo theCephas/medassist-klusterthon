@@ -39,7 +39,7 @@ const PasswordInput: React.FC<IPasswordInputProps> = ({
     <div className="mb-4 relative">
       <label
         htmlFor={label}
-        className="block font-medium mb-1 text-[14px] leading-[22px] text-[#222D33]"
+        className="block font-medium font-lora mb-1 text-[14px] leading-[22px] text-font"
       >
         {label}
       </label>
@@ -47,9 +47,9 @@ const PasswordInput: React.FC<IPasswordInputProps> = ({
         {...field}
         type={!visible ? "password" : "text"}
         placeholder={placeholder}
-        className={`w-full p-2 rounded-md border ${
-          error ? "border-[#a10]" : "border - #E5E7EB"
-        } focus:border-[#005700] focus:outline-none placeholder:text-[16px] placeholder:leading-[28px] text-[#222D33] placeholder:font-normal placeholder:text-[#C2C2C2]`}
+        className={`w-full p-2 rounded-md border border-opacity-40 px-4 ${
+          error ? "border-[#a10]" : "border-font"
+        } focus:border-primary focus:outline-none placeholder:text-sm placeholder:font-inter placeholder:leading-[28px] text-[#222D33] placeholder:font-normal placeholder:text-font`}
       />
 
       <span
@@ -57,9 +57,9 @@ const PasswordInput: React.FC<IPasswordInputProps> = ({
         className="absolute  right-4 transform translate-y-2   cursor-pointer text-gray-500"
       >
         {visible ? (
-            <AiOutlineEye size={23} />
-            ) : (
-            <AiOutlineEyeInvisible size={23} />
+          <AiOutlineEye size={23} />
+        ) : (
+          <AiOutlineEyeInvisible size={23} />
         )}
       </span>
       <p className="text-[#a10]">{error?.message}</p>

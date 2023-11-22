@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { jwtDecode } from "jwt-decode";
+import { SignUp } from "./components/SignUp";
+import { SignIn } from "./components/SignIn";
+import { WelcomeBoard } from "./components/WelcomeScreen";
 const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 
 
@@ -28,24 +31,34 @@ function App() {
       }
     );
     //@ts-expect-error this is an auth type check
+    window.google.accounts.id.renderButton(
+      document.getElementById("SignUpBtn"),
+    
+      {
+        theme: "outline",
+        size: "large",
+      }
+    );
+    //@ts-expect-error this is an auth type check
     window.google.account?.id.prompt();
   }, []);
   console.log(users);
   return (
-    <div className="flex items-center justify-center h-full ">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
-        culpa.
-        {/* <Login /> */}
-      </p>
+    <>
+      <div className="items-center justify-center h-full hidden">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias,
+          culpa.
+          {/* <Login /> */}
+        </p>
+      </div>
 
-      <div id="loginBtn"></div>
-    </div>
+      <SignUp />
+      {/* <SignIn /> */}
+      {/* <WelcomeBoard/> */}
+    </>
   );
 }
-
-
-
 
 
 
