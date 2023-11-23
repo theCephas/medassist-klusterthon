@@ -11,8 +11,8 @@ const Nav = () => {
   const toggleSidebar = useSidebarState((state) => state.toggleSidebar);
 
   return (
-    <div className="  border-b border-[#D9D9D9] h-[80px] w-full px-10 flex items-center justify-between shadow z-50 bg-[#fff]">
-      <div className="flex lg:hidden md:block block items-center justify-center md:gap-2 xxs:gap-3">
+    <div className="  h-[80px] w-full px-10 flex items-center justify-between shadow z-50 bg-[#fff]">
+      <div className="flex lg:hidden md:block  items-center justify-center md:gap-2 xxs:gap-3">
         <div className="lg:hidden md:block block">
           {showSideBar ? (
             <div
@@ -56,10 +56,10 @@ const Nav = () => {
                   <p>Add Dependent</p>
                 </div>
               }
-              path="/sign-up"
+              path="#"
             />
           </div>
-          <div className="border rounded-lg border-[#62B6CB] p-2 text-slate-600">
+          <div  className="border rounded-lg border-[#62B6CB] p-2 text-slate-600 cursor-pointer active:scale-90 ease-in-out transition-all shadow-md">
             <RxAvatar size={24} />
           </div>
         </div>

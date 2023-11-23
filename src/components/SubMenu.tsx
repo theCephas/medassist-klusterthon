@@ -16,11 +16,11 @@ const SideBarLink = styled(NavLink)`
   padding-top: 24px;
 
   &:hover {
-    color: #197b30;
+    color: #62b6cb;
     cursor: pointer;
   }
   &:active {
-    color: #197b30;
+    color: #62b6cb;
     font-weight: bold;
   }
 `;
@@ -38,7 +38,7 @@ const SubMenu = ({ item }: { item: ISideBarLink }) => {
   const [subnav, setSubnav] = useState(false);
   const toggleSideBar = useSidebarState((state) => state.toggleSidebar);
 
-  const activeLink = `text-[#197B30] rounded-tl-lg rounded-bl-lg border-r-4 border-[#197B30] font-bold bg-[#e3f9e985]`;
+  const activeLink = `text-[#62B6CB] rounded-tl-lg rounded-bl-lg border-r-4 border-[#62B6CB] font-bold `;
 
   const showSubnav = () => setSubnav(!subnav);
 

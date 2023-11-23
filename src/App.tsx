@@ -10,6 +10,12 @@ import Dashboard from "./pages/dasboard/Dashboard";
 import { SignUp } from "./components/SignUp";
 import { SignIn } from "./components/SignIn";
 import SetReminder from "./components/SetReminder";
+import EducationalRes from "./pages/dasboard/EducationalRes";
+import AdherenceTrk from "./pages/dasboard/AdherenceTrk";
+import MedicationMgt from "./pages/dasboard/MedicationMgt";
+import Reminders from "./pages/dasboard/Reminders";
+import HealthCare from "./components/dashboard-comp/HealthCare";
+import Notes from "./components/dashboard-comp/Notes";
 // import { WelcomeBoard } from "./components/WelcomeScreen";
 
 const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
@@ -25,12 +31,12 @@ function App() {
 
   useEffect(() => {
     //@ts-expect-error this is an auth type check
-    window.google.accounts.id.initialize({
+    window.google?.accounts.id.initialize({
       client_id: clientID,
       callback: handleCallBackResponse,
     });
     //@ts-expect-error this is an auth type check
-    window.google.accounts.id.renderButton(
+    window.google?.accounts.id.renderButton(
       document.getElementById("loginBtn"),
       {
         theme: "#000",
@@ -60,7 +66,26 @@ function App() {
           <Route path="/set-reminder" index element={<SetReminder />} />
 
           <Route path="" element={<DashboardLayout />}>
+
             <Route path="/dashboard" index element={<Dashboard />} />
+            <Route path="/reminders"  element={<Reminders />} />
+            <Route path="/medication_management"  element={<MedicationMgt />} />
+            <Route path="/adherence_tracker"  element={<AdherenceTrk />} />
+            <Route
+              path="/educational_resources"
+
+              element={<EducationalRes />}
+            />
+            <Route
+              path="/healthcare"
+
+              element={<HealthCare />}
+            />
+            <Route
+              path="/notes"
+
+              element={<Notes />}
+            />
           </Route>
         </Routes>
       </div>

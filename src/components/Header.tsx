@@ -20,7 +20,7 @@ const Header = () => {
         {/* Menu Btn */}
 
         <div className="z-50 h-full  lg:w-auto w-full flex items-center gap-4">
-          <div className="flex gap-2">
+          <div className="flex justify-between gap-2">
             <button
               onClick={() => toggleSidebar(!showSideBar)}
               className="text-3xl lg:hidden flex"
