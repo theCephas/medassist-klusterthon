@@ -9,8 +9,8 @@ import DashboardLayout from "./layout/DashboardLayout";
 import Dashboard from "./pages/dasboard/Dashboard";
 import { SignUp } from "./components/SignUp";
 import { SignIn } from "./components/SignIn";
+import SetReminder from "./components/SetReminder";
 // import { WelcomeBoard } from "./components/WelcomeScreen";
-
 
 const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 
@@ -57,6 +57,7 @@ function App() {
           <Route path="/" index element={<Home />} />
           <Route path="/sign-in" index element={<SignIn />} />
           <Route path="/sign-up" index element={<SignUp />} />
+          <Route path="/set-reminder" index element={<SetReminder />} />
 
           <Route path="" element={<DashboardLayout />}>
             <Route path="/dashboard" index element={<Dashboard />} />
