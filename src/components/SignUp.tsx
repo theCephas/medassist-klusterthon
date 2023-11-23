@@ -3,7 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import PasswordInput from "./PasswordInput";
 import Logo from "../assets/medassist.svg";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // import { useUserLogin } from "@/service/hooks";
 
