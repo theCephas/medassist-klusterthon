@@ -1,19 +1,25 @@
 import Carousel from "../components/Carousel";
-import Header from "../components/Header"
-import MidSection from "../components/MidSection"
-import Section from "../components/Section"
+import Contact from "../components/Contact";
+import Faqs from "../components/Faqs";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import MidSection from "../components/MidSection";
+import Section from "../components/Section";
+import WhyMedAssist from "../components/WhyMedAssist";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Header />
       <Section />
-      <div className="mt-40 flex items-center justify-center">
-        <MidSection />
-      </div>
-      <div><Carousel/></div>
-    </div>
+      <MidSection />
+      <Carousel />
+      <WhyMedAssist />
+      <Faqs />
+      <Contact />
+      <Footer />
+    </>
   );
-}
+};
 
-export default Home
+export default Home;

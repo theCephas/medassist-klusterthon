@@ -10,6 +10,7 @@ export default {
       colors: {
         primary: "#1B4965",
         secondary: "#CAE9FF",
+        home: "#EEF8FF",
         font: "#111111",
       },
       backgroundImage: {
@@ -19,3 +20,5 @@ export default {
   },
   plugins: [],
 };
+
+// sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px]

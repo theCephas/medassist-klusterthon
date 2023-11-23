@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useSidebarState } from "../services/states";
 import { ISideBarLink, SubNavLink } from "../util/NavLink";
 
-
 const SideBarLink = styled(NavLink)`
   display: flex;
 
@@ -16,11 +15,11 @@ const SideBarLink = styled(NavLink)`
   padding-top: 24px;
 
   &:hover {
-    color: #197b30;
+    color: #1b4965;
     cursor: pointer;
   }
   &:active {
-    color: #197b30;
+    color: #1b4965;
     font-weight: bold;
   }
 `;
@@ -31,7 +30,6 @@ const SideBarLabel = styled.span`
   font-size: 16px;
   line-height: normal;
 `;
-
 
 const SubMenu = ({ item }: { item: ISideBarLink }) => {
   const location = useLocation();
@@ -50,11 +48,11 @@ const SubMenu = ({ item }: { item: ISideBarLink }) => {
           className={`border- ${
             location.pathname === item.url
               ? activeLink
-              : "text-[#A2A2A2] font-light hover:cursor-pointer"
+              : "text-font font-light hover:cursor-pointer"
           }`}
           onClick={() => (item.subNav ? showSubnav() : toggleSideBar(false))}
         >
-          <div>{item.icon}</div>
+          {/* <div>{item.icon}</div> */}
           <SideBarLabel>{item.name}</SideBarLabel>
           <div className={`ml-auto`}>
             {item.subNav && subnav
@@ -64,7 +62,8 @@ const SubMenu = ({ item }: { item: ISideBarLink }) => {
               : null}
           </div>
         </SideBarLink>
-        {subnav && item.subNav &&
+        {subnav &&
+          item.subNav &&
           item.subNav.map((item: SubNavLink, index: number) => {
             return (
               <NavLink
