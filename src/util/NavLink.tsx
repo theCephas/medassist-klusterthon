@@ -9,7 +9,7 @@ import { RxDashboard } from "react-icons/rx";
 export type SubLink = {
   name: string;
   link: string;
- icon?: React.ReactElement;
+  icon?: React.ReactElement;
 };
 
 export type SubMenu = {
@@ -21,14 +21,14 @@ export type ILink = {
   name: string;
   subMenu: boolean;
   path: string;
-   icon?: React.ReactElement;
+  icon?: React.ReactElement;
   subLinks?: SubMenu[];
 };
 
 export interface SubNavLink {
   id: number;
   name: string;
-    icon: JSX.Element;
+  icon: JSX.Element;
   url: string;
 }
 
@@ -42,8 +42,7 @@ export interface ISideBarLink {
   subNav?: SubNavLink[];
 }
 
-export const links:ILink[] = [
-
+export const links: ILink[] = [
   {
     name: "Features",
     subMenu: true,
@@ -56,9 +55,8 @@ export const links:ILink[] = [
           {
             name: "Checks",
             link: "/services/agro-services",
-              icon: <MdOutlineFeaturedPlayList />,
+            icon: <MdOutlineFeaturedPlayList />,
           },
-
         ],
       },
     ],
@@ -67,7 +65,7 @@ export const links:ILink[] = [
     name: "Pricing",
     subMenu: false,
     path: "/about-us",
-     icon: <MdOutlineFeaturedPlayList />,
+    icon: <MdOutlineFeaturedPlayList />,
   },
   {
     name: "Blog",
@@ -79,16 +77,15 @@ export const links:ILink[] = [
     name: "About",
     subMenu: false,
     path: "/contact-us",
-     icon: <MdOutlineFeaturedPlayList />,
+    icon: <MdOutlineFeaturedPlayList />,
   },
   {
     name: "Contact Us",
     subMenu: false,
     path: "/contact-us",
-     icon: <MdOutlineFeaturedPlayList />,
+    icon: <MdOutlineFeaturedPlayList />,
   },
 ];
-
 
 export const MainSideBarLinks: ISideBarLink[] = [
   {
@@ -102,10 +99,9 @@ export const MainSideBarLinks: ISideBarLink[] = [
       {
         id: 0,
         name: " Services",
-            url: "/services/agro-services",
-           icon: <MdOutlineFeaturedPlayList width={"20px"} height={"20px"} />,
+        url: "/services/agro-services",
+        icon: <MdOutlineFeaturedPlayList width={"20px"} height={"20px"} />,
       },
-
     ],
   },
   {
@@ -132,7 +128,6 @@ export const MainSideBarLinks: ISideBarLink[] = [
     url: "/contact-us",
     icon: <MdOutlineFeaturedPlayList width={"20px"} height={"20px"} />,
   },
-
 ];
 export const DashboardLink: ISideBarLink[] = [
   {
