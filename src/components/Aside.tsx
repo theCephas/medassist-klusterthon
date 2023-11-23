@@ -10,39 +10,7 @@ import SubMenu from "./SubMenu";
 
 const Aside = () => {
   const sideBarOpen = useSidebarState((state) => state.sideBarOpen);
-//   const toggleSideBar = useSidebarState((state) => state.toggleSidebar);
-//   const [user, setUser] = useState<User | null>(null);
-  // const [user, setUser] = useState(null);
 
-//   const navigate = useNavigate();
-  // const [temp, setTemp] = useState(false);
-
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggleDropdown = () => {
-//     setIsOpen(!isOpen);
-//   };
-
-//   const handleMenuClick = (route:string) => {
-//     toggleSideBar(false)
-//     navigate(route)
-//   }
-
-//   useEffect(() => {
-//     //@ts-ignore
-//     const storedUser = JSON.parse(localStorage.getItem("user"));
-//     if (storedUser !== null) {
-//       setUser(storedUser);
-//     } else {
-//       setUser(null);
-//     }
-//   }, []);
-
-//   const handleLogout = () => {
-//     // setTemp(true);
-//     window.localStorage.removeItem("accessToken");
-//     window.localStorage.removeItem("user");
-//   };
 
   return (
     <div

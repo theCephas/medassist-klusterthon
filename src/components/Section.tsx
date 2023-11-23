@@ -1,7 +1,3 @@
-import image1 from "/public/image1.png"
-import image2 from "/public/image2.png"
-import image3 from "/public/image3.png"
-import image4 from "/public/image4.png"
 import { useSpring, animated } from 'react-spring';
 
 
@@ -77,7 +73,7 @@ function Section() {
                     <animated.div style={image1Animation}>
 
                         <img
-                            src={image1}
+                            src="/public/image1.png"
                             alt="Image 1"
                             className="h-40 w-40 object-cover rounded"
                         />
@@ -85,7 +81,7 @@ function Section() {
                     <animated.div style={image3Animation}>
 
                         <img
-                            src={image3}
+                            src="/public/image3.png"
                             alt="Image 2"
                             className="h-40 w-40 object-cover rounded"
                         />
@@ -96,14 +92,14 @@ function Section() {
                     <animated.div style={image2Animation}>
 
                         <img
-                            src={image2}
+                            src="/public/image2.png"
                             alt="Image 3"
                             className="h-40 w-40 object-cover rounded"
                         />
                     </animated.div>
                     <animated.div style={image4Animation}>
                         <img
-                            src={image4}
+                            src="/public/image4.png"
                             alt="Image 4"
                             className="h-40 w-40 object-cover rounded"
                         />

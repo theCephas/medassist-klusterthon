@@ -3,10 +3,14 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import Home from "./pages/Home";
-import { SignIn } from "./components/SignIn";
-import { SignUp } from "./components/SignUp";
+// import { SignIn } from "./components/SignIn";
+// import { SignUp } from "./components/SignUp";
 import DashboardLayout from "./layout/DashboardLayout";
 import Dashboard from "./pages/dasboard/Dashboard";
+import { SignUp } from "./components/SignUp";
+import { SignIn } from "./components/SignIn";
+// import { WelcomeBoard } from "./components/WelcomeScreen";
+
 
 const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 
@@ -28,6 +32,15 @@ function App() {
     //@ts-expect-error this is an auth type check
     window.google.accounts.id.renderButton(
       document.getElementById("loginBtn"),
+      {
+        theme: "#000",
+        size: "large",
+      }
+    );
+    //@ts-expect-error this is an auth type check
+    window.google.accounts.id.renderButton(
+      document.getElementById("SignUpBtn"),
+
       {
         theme: "outline",
         size: "large",

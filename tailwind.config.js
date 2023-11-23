@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        lora: "Lora, serif",
+        dmserif: "DM Serif Text, serif",
         inter: "Inter, sans-serif",
       },
       colors: {
@@ -13,7 +13,7 @@ export default {
         font: "#111111",
       },
       backgroundImage: {
-        grad: "linear-gradient(to top, #cae9ff,#cae9ffa1), url(./public/auth.jpg)",
+        grad: "linear-gradient(to bottom, #cae9ff,#cae9ffa1), url(./public/auth.jpg)",
       },
     },
   },
