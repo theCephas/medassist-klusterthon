@@ -34,16 +34,16 @@ export function SignUp() {
   };
 
   return (
-    <section className="w-full h-auto flex flex-col justify-between md:flex-row lg:h-screen">
-      <div className="w-full flex  flex-col justify-center items-center bg-grad bg-no-repeat bg-bottom bg-cover p-5 pb-8 md:static md:top-0 md:left-0 md:z-[1] md:w-2/5">
+    <section className="w-full h-auto flex flex-col justify-start items-center lg:flex-row lg:h-screen">
+      <div className="w-full flex  flex-col justify-center items-center bg-grad bg-no-repeat bg-bottom bg-cover p-5 pb-8 lg:w-2/5 lg:h-full">
         <img
           src={Logo}
-          className="w-[170px] mb-8 cursor-pointer md:absolute md:top-5 md:left-20"
+          className="w-[170px] mb-8 cursor-pointer lg:absolute lg:top-5 lg:left-20"
           alt="MedAssist Logo"
           onClick={() => {}}
         />
 
-        <div className="w-full max-w-[350px] p-8 bg-white bg-opacity-80 backdrop-blur-lg rounded-lg">
+        <div className="w-full max-w-[350px] p-8 bg-white bg-opacity-70 backdrop-blur-lg rounded-lg">
           <h1 className="text-font font-semibold mb-2 text-xl">
             Welcome back to MedAssist
           </h1>
@@ -53,7 +53,7 @@ export function SignUp() {
           </p>
         </div>
       </div>
-      <div className="w-full bg-white flex flex-col justify-center items-center pt-8 pb-8 md:w-[60%]">
+      <div className="w-full max-w-[400px] bg-white flex flex-col justify-start items-center pt-8 pb-8 sm:max-w-[500px] md:max-w-[650px] lg:max-w-[60%] lg:h-full lg:overflow-y-auto">
         <div className="mb-4 w-11/12">
           <h2 className="text-center font-bold text-2xl mb-0">Sign Up</h2>
           <p className="text-center mb-6">

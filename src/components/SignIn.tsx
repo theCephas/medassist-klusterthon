@@ -2,6 +2,7 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import PasswordInput from "./PasswordInput";
+import Logo from "../assets/medassist.svg";
 import { useNavigate } from "react-router-dom";
 
 const schema = yup.object().shape({
@@ -25,53 +26,38 @@ export function SignIn() {
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const onSubmit: SubmitHandler<FormValues> = () => {
     console.log();
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-screen">
+    <section className="w-full h-auto flex flex-col justify-start items-center lg:flex-row lg:h-screen">
       {/* left side - Illustrator Section */}
-      <div
-        className="w-1/3 bg-cover bg-center relative"
-        style={{
-          backgroundImage:
-            "linear-gradient(160deg, #CAE9FF 35.35%, rgba(202, 233, 255, 0.00) 148.95%), url('/public/auth.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-lightgray mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-cover bg-center">
-          <div className="h-full flex flex-col justify-center items-center   text-white p-4">
-            <img
-              src="/public/MedAssist.png"
-              className="w-[170px] mb-8 cursor-pointer md:absolute md:mb-0 md:top-5 md:left-5"
-              alt="MedAssist Logo"
-              onClick={() => { }}
-            />
-            <div className="w-full max-w-[350px] px-10 py-16 bg-white bg-opacity-80 backdrop-blur-lg rounded-lg flex flex-col items-center">
-              {" "}
-              <h1
-                className="text-font font-semibold mb-2 text-[24px] leading-[33.6px] whitespace-nowrap font-serif"
-                style={{ fontFamily: "Lora" }}
-              >
-                Welcome back to MedAssist{" "}
-              </h1>{" "}
-              <p className="text-primary text-sm text-justified">
-                Your all-in-one solution for seamless medication management and
-                adherence.{" "}
-              </p>{" "}
-            </div>
-          </div>
+
+      <div className="w-full flex  flex-col justify-center items-center bg-grad bg-no-repeat bg-bottom bg-cover p-5 pb-8 lg:w-2/5 lg:h-full">
+        <img
+          src={Logo}
+          className="w-[170px] mb-8 cursor-pointer lg:absolute lg:top-5 lg:left-20"
+          alt="MedAssist Logo"
+          onClick={() => {}}
+        />
+
+        <div className="w-full max-w-[350px] p-8 bg-white bg-opacity-70 backdrop-blur-lg rounded-lg">
+          <h1 className="text-font font-semibold mb-2 text-xl">
+            Welcome back to MedAssist
+          </h1>
+          <p className="text-primary">
+            Your all-in-one solution for seamless medication management and
+            adherence.
+          </p>
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col justify-center items-center p-4 bg-[#fff]">
+      <div className="w-full max-w-[400px] bg-white flex flex-col justify-start items-center pt-8 pb-8 sm:max-w-[500px] md:max-w-[650px] lg:max-w-[60%] lg:h-full lg:overflow-y-auto">
         <div className="mb-4 w-11/12">
-          <h2 className="text-center text-[#111] font-bold text-2xl mb-0 font-serif">
-            Sign In
-          </h2>
-          <p className="text-center mb-6 text-[#111] text-sm font-inter">
+          <h2 className="text-center font-bold text-2xl mb-0">Sign In</h2>
+          <p className="text-center mb-6">
             Sign In to Continue using MedAssist
           </p>
         </div>
@@ -96,8 +82,9 @@ export function SignIn() {
                   {...field}
                   type="text"
                   placeholder="Email"
-                  className={`w-full p-2 rounded border px-4 border-opacity-40 ${errors.email ? "border-[#a10]" : "border-font"
-                    } focus:border-primary focus:outline-none placeholder:font-inter placeholder:text-font placeholder:text-sm`}
+                  className={`w-full p-2 rounded border px-4 border-opacity-40 ${
+                    errors.email ? "border-[#a10]" : "border-font"
+                  } focus:border-primary focus:outline-none placeholder:font-inter placeholder:text-font placeholder:text-sm`}
                 />
               )}
             />
@@ -131,7 +118,13 @@ export function SignIn() {
 
           <p className="my-3 text-center">
             Don't have an account?
-            <span onClick={() => navigate("/sign-up")} className="text-primary cursor-pointer"> Sign Up</span>
+            <span
+              onClick={() => navigate("/sign-up")}
+              className="text-primary cursor-pointer"
+            >
+              {" "}
+              Sign Up
+            </span>
           </p>
 
           <div className="flex justify-center gap-3 text-sm items-center uppercase text-center before:inline-block before:flex-grow-[1] before:w-[40%] before:h-[1px] before:bg-font before:bg-opacity-50 after:inline-block after:flex-grow-[1] after:w-[40%] after:h-[1px] after:bg-font  after:bg-opacity-50">
@@ -143,7 +136,6 @@ export function SignIn() {
           ></div>
         </form>
       </div>
-    </div>
-
-  )
+    </section>
+  );
 }
