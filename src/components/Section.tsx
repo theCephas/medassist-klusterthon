@@ -46,10 +46,10 @@ function Section() {
     return (
         <div className="flex flex-col  lg:flex-row lg:justify-between md:text-center lg:text-left  pt-16 px-5 lg:px-14 mt-10 bg-secondary lg:relative ">
             {/* Left Side: Welcome Text, Subtext, Get Started Button */}
-            <div className=" max-w-md lg:max-w-4xl my-12">
+            <div className=" max-w-md md:max-w-2xl lg:max-w-4xl my-12">
                 <animated.div style={headerAnimation}>
 
-                    <h1 className="text-[40px] leading-[50px] font-bold mb-4 text-primary font-serif">
+                    <h1 className="text-[30px] leading-[40px] font-bold mb-4 text-primary font-serif">
                         Welcome to MedAssist - Your Personal medication companion
                     </h1>
                 </animated.div>
