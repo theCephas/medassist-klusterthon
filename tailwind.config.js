@@ -10,6 +10,8 @@ export default {
       colors: {
         primary: "#1B4965",
         secondary: "#CAE9FF",
+        home: "#EEF8FF",
+        dash: "#D7EEFF",
         font: "#111111",
       },
       backgroundImage: {

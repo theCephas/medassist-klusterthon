@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useSidebarState } from "../services/states";
 import { ISideBarLink, SubNavLink } from "../util/NavLink";
 
-
 const SideBarLink = styled(NavLink)`
   display: flex;
 
@@ -32,13 +31,12 @@ const SideBarLabel = styled.span`
   line-height: normal;
 `;
 
-
 const SubMenu = ({ item }: { item: ISideBarLink }) => {
   const location = useLocation();
   const [subnav, setSubnav] = useState(false);
   const toggleSideBar = useSidebarState((state) => state.toggleSidebar);
 
-  const activeLink = `text-[#62B6CB] rounded-tl-lg rounded-bl-lg border-r-4 border-[#62B6CB] font-bold `;
+  const activeLink = `bg-primary text-white font-bold `;
 
   const showSubnav = () => setSubnav(!subnav);
 
@@ -50,7 +48,7 @@ const SubMenu = ({ item }: { item: ISideBarLink }) => {
           className={`border- ${
             location.pathname === item.url
               ? activeLink
-              : "text-[#A2A2A2] font-light hover:cursor-pointer"
+              : "text-primary font-light hover:cursor-pointer"
           }`}
           onClick={() => (item.subNav ? showSubnav() : toggleSideBar(false))}
         >
@@ -64,7 +62,8 @@ const SubMenu = ({ item }: { item: ISideBarLink }) => {
               : null}
           </div>
         </SideBarLink>
-        {subnav && item.subNav &&
+        {subnav &&
+          item.subNav &&
           item.subNav.map((item: SubNavLink, index: number) => {
             return (
               <NavLink
