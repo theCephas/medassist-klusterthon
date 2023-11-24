@@ -32,16 +32,16 @@ const Nav = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-end w-full gap-20">
-          <div className="lg:relative lg:flex lg:items-center lg:justify-center md:hidden hidden">
-            <div className="relative">
+        <div className="flex items-center justify-end w-full gap-20 lg:justify-between">
+          <div className="lg:relative lg:w-3/5 lg:flex lg:items-center lg:justify-center md:hidden hidden">
+            <div className="relative w-full">
               <input
                 type="text"
                 placeholder="Search anything"
-                className="text-sm focus:outline-none active:outline-none h-9 w-[664px] bg-[#fff] rounded-lg pl-4 border"
+                className="text-sm focus:outline-none active:outline-none h-auto w-full bg-[#fff] rounded-lg p-4 pl-4 border"
               />
-              <div className="absolute top-0 right-0 mt-2 mr-2">
-                <HiOutlineSearch size={20} />
+              <div className="absolute top-4 right-5 cursor-pointer">
+                <HiOutlineSearch size={24} className="hover:stroke-primary" />
               </div>
             </div>
           </div>

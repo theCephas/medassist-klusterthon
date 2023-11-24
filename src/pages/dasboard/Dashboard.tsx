@@ -41,7 +41,7 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="container px-4 mx-auto sm:max-w-[600px] md:max-w-[760px] lg:max-w-[100%]">
+    <div className="container px-4 mx-auto sm:max-w-[600px] md:max-w-[760px] lg:max-w-[100%] lg:px-14">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 h-full">
         {/* Three cards taking 70% of the screen */}
         <div className="col-span-1 md:col-span-2 lg:col-span-3 mt-8">

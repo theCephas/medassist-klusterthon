@@ -4,9 +4,9 @@ import SideNav from "../components/dashboard-comp/SideNav";
 
 function DashboardLayout() {
   return (
-    <div className="flex">
+    <div className="flex justify-between">
       <SideNav />
-      <div className="">
+      <div className="w-3/5 flex-grow">
         <Nav />
         <Outlet />
       </div>
