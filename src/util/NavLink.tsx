@@ -93,8 +93,8 @@ export const MainSideBarLinks: ISideBarLink[] = [
     name: "Features",
     url: "",
     icon: <MdOutlineFeaturedPlayList width={"20px"} height={"20px"} />,
-    iconClosed: <MdOutlineFeaturedPlayList />,
-    iconOpen: <MdOutlineFeaturedPlayList />,
+    // iconClosed: <MdOutlineFeaturedPlayList />,
+    // iconOpen: <MdOutlineFeaturedPlayList />,
     subNav: [
       {
         id: 0,

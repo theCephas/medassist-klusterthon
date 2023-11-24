@@ -15,8 +15,8 @@ const Header = () => {
   const toggleSidebar = useSidebarState((state) => state.toggleSidebar);
 
   return (
-    <div className="bg-secondary fixed xxs:h-20 top-0 w-full z-50 shadow-md lg:py-0 px-[4%]">
-      <nav className="lg:flex h-full w-full  items-center font-medium justify-between">
+    <div className="bg-home fixed h-20 top-0 w-full z-50 shadow-md lg:py-0">
+      <nav className="container mx-auto px-4 sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px] lg:flex h-full w-full  items-center font-medium justify-between">
         {/* Menu Btn */}
 
         <div className="z-50 h-full  lg:w-auto w-full flex items-center gap-4">
