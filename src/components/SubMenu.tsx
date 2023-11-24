@@ -13,11 +13,13 @@ const SideBarLink = styled(NavLink)`
   padding: 28px;
   height: 60px;
   padding-top: 24px;
+  transition: 300ms;
 
   &:hover {
-    color: #62b6cb;
+    transform: translateX(5px);
     cursor: pointer;
   }
+
   &:active {
     color: #62b6cb;
     font-weight: bold;

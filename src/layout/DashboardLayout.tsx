@@ -2,6 +2,8 @@ import { Outlet } from "react-router-dom";
 import Nav from "../components/dashboard-comp/Nav";
 import SideNav from "../components/dashboard-comp/SideNav";
 
+// import AddDependant from "../components/dashboard-comp/AddDependant";
+
 function DashboardLayout() {
   return (
     <div className="flex justify-between">
@@ -10,6 +12,7 @@ function DashboardLayout() {
         <Nav />
         <Outlet />
       </div>
+      {/* <AddDependant /> */}
     </div>
   );
 }

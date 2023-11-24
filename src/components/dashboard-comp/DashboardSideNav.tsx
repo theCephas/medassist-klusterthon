@@ -8,7 +8,7 @@ const DashboardSideNav = () => {
   const navigate = useNavigate();
   return (
     <div
-      className={`lg:flex fixed lg:relative md:top-16 lg:top-0 left-0 z-40 bg-[#EEEEEE] lg:bg-secondary w-[300px] border-r h-screen flex-col  lg:pt-8 md:pt-8 transition-all duration-500 overflow-y-hidden ${
+      className={`lg:flex fixed lg:relative md:top-16 lg:top-0 left-0 z-40 bg-secondary w-[300px] border-r h-screen flex-col pt-8 md:pt-8 transition-all duration-500 overflow-y-hidden ${
         !sideBarOpen ? "-translate-x-full lg:translate-x-0" : ""
       }`}
     >
