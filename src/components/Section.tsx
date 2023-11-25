@@ -1,9 +1,6 @@
 import { useSpring, animated } from "react-spring";
 import { CiHeart } from "react-icons/ci";
-import Image1 from "../assets/image1.jpg";
-import Image2 from "../assets/image2.jpg";
-import Image3 from "../assets/image3.jpg";
-import Image4 from "../assets/image4.jpg";
+import HeroImg from "../assets/hero-img.png";
 import Arrow from "../assets/arrow.png";
 
 function Section() {
@@ -31,23 +28,6 @@ function Section() {
     config: { duration: 500, delay: 600 },
   });
 
-  const image2Animation = useSpring({
-    from: { opacity: 0, transform: "translateX(-20px)" },
-    to: { opacity: 1, transform: "translateX(0)" },
-    config: { duration: 500, delay: 800 },
-  });
-
-  const image3Animation = useSpring({
-    from: { opacity: 0, transform: "translateX(-20px)" },
-    to: { opacity: 1, transform: "translateX(0)" },
-    config: { duration: 500, delay: 1000 },
-  });
-
-  const image4Animation = useSpring({
-    from: { opacity: 0, transform: "translateX(-20px)" },
-    to: { opacity: 1, transform: "translateX(0)" },
-    config: { duration: 500, delay: 1200 },
-  });
   return (
     <div className=" sm:text-center lg:text-left  pt-16 pb-16 bg-home lg:pb-0 lg:relative ">
       <div className="container mx-auto px-4 sm:max-w-[600px] md:max-w-[760px] lg:pt-16 lg:max-w-[1140px] flex flex-col  lg:flex-row lg:justify-between">
@@ -79,7 +59,7 @@ function Section() {
         </div>
 
         {/* Right Side: Stacked Images */}
-        <div className="w-[300px] mx-auto grid grid-cols-2 gap-3 lg:w-auto lg:gap-8 lg:absolute lg:right-20">
+        <div className="w-[300px] mx-auto grid grid-cols-1 gap-3 lg:w-[35%] lg:gap-8 lg:absolute lg:right-20">
           <span className="hidden lg:inline-flex items-center absolute bottom-[100px] -left-16 z-20 rounded-[30px] border border-[#62B6CB] gap-3 bg-white px-2 py-2">
             <span className="bg-[#62B6CB] p-2 rounded-full">
               <CiHeart className="fill-white" />
@@ -88,30 +68,9 @@ function Section() {
           </span>
           <animated.div style={image1Animation}>
             <img
-              src={Image1}
-              alt="Image 1"
-              className="lg:h-40 lg:w-40 object-cover rounded"
-            />
-          </animated.div>
-          <animated.div style={image2Animation}>
-            <img
-              src={Image2}
-              alt="Image 3"
-              className="lg:h-40 lg:w-40 object-cover rounded"
-            />
-          </animated.div>
-          <animated.div style={image3Animation}>
-            <img
-              src={Image3}
-              alt="Image 2"
-              className="lg:h-40 lg:w-40 object-cover rounded"
-            />
-          </animated.div>
-          <animated.div style={image4Animation}>
-            <img
-              src={Image4}
-              alt="Image 4"
-              className="lg:h-40 lg:w-40 object-cover rounded"
+              src={HeroImg}
+              alt="Hero Image"
+              className="w-full object-cover rounded"
             />
           </animated.div>
         </div>
