@@ -4,7 +4,7 @@ function WhyMedAssist() {
   return (
     <section className="bg-home py-16 border-t border-primary border-opacity-50">
       <div className="container xl:max-w-[1140px] mx-auto px-4">
-        <h1 className="text-primary text-3xl text-center">
+        <h1 className="text-primary text-2xl text-center sm:text-3xl md:text-4xl">
           Why Choose MedAssist?
         </h1>
 

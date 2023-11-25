@@ -14,7 +14,7 @@ export default {
         font: "#111111",
       },
       backgroundImage: {
-        grad: "linear-gradient(to bottom, #cae9ff,#cae9ffa1), url(./src/assets/auth.jpg)",
+        grad: "linear-gradient(to bottom, #cae9ff,#cae9ffa1), url(../src/assets/auth.jpg)",
       },
     },
   },
