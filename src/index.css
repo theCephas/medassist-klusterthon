@@ -1,4 +1,25 @@
+/* GOOGLE FONTS */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Inter:wght@400;500&display=swap");
+
 /* TAILWIND STYLINGS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  body {
+    @apply font-inter antialiased font-normal text-base;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-normal font-dmserif;
+  }
+
+  section,
+  div {
+    @apply relative;
+  }
+}

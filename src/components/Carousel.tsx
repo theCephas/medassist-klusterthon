@@ -32,24 +32,26 @@ const Carousel = () => {
     });
 
   return (
-    <div className="bg-secondary mt-12 p-4">
-      <h1 className="text-3xl font-serif text-center text-primary mb-4">
-        Our Key Features
-      </h1>
-      <div className="">
-        <button
-          className="bg-primary text-white px-4 py-2 rounded-md mr-2"
-          onClick={slideToPrevItem}
-        >
-          Prev
-        </button>
-        <div className="flex-grow">{carouselFragment}</div>
-        <button
-          className="bg-primary text-white px-4 py-2 rounded-md ml-2"
-          onClick={slideToNextItem}
-        >
-          Next
-        </button>
+    <div className="bg-home mt-12 py-16">
+      <div className="container mx-auto px-4 sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px]">
+        <h1 className="text-3xl text-center text-primary mb-4">
+          Our Key Features
+        </h1>
+        <div className="">
+          <button
+            className="bg-primary text-white px-4 py-2 rounded-md mr-2"
+            onClick={slideToPrevItem}
+          >
+            Prev
+          </button>
+          <div className="flex-grow">{carouselFragment}</div>
+          <button
+            className="bg-primary text-white px-4 py-2 rounded-md ml-2"
+            onClick={slideToNextItem}
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

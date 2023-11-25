@@ -9,7 +9,7 @@ const Notes = () => {
         </span>
         <div className="flex items-center justify-center h-full">
           <span className="flex item-center gap-1 cursor-pointer">
-            <BsPlus />{" "}
+            <BsPlus />
             <span className="text-[12px] leading-[15px] text-primary">
               Add notes
             </span>

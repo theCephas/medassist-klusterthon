@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { IconContext } from "react-icons/lib";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -21,7 +21,7 @@ const SideBarLink = styled(NavLink)`
   }
 
   &:active {
-    color: #62b6cb;
+    color: #1b4965;
     font-weight: bold;
   }
 `;
@@ -54,7 +54,7 @@ const SubMenu = ({ item }: { item: ISideBarLink }) => {
           }`}
           onClick={() => (item.subNav ? showSubnav() : toggleSideBar(false))}
         >
-          <div>{item.icon}</div>
+          {/* <div>{item.icon}</div> */}
           <SideBarLabel>{item.name}</SideBarLabel>
           <div className={`ml-auto`}>
             {item.subNav && subnav

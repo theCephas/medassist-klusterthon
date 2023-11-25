@@ -15,9 +15,11 @@ export default {
         font: "#111111",
       },
       backgroundImage: {
-        grad: "linear-gradient(to bottom, #cae9ff,#cae9ffa1), url(./public/auth.jpg)",
+        grad: "linear-gradient(to bottom, #cae9ff,#cae9ffa1), url(./src/assets/auth.jpg)",
       },
     },
   },
   plugins: [],
 };
+
+// sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px]
