@@ -74,7 +74,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
       </div>
 
       {isOpen && (
-        <div className="pt-4 pb-8 leading-6 list-disc list-item ml-7 pl-2 pr-4 text-[#7C7C7C] duration-300">
+        <div className="pt-4 pb-8 leading-6 text-[#7C7C7C] duration-300">
           {children}
         </div>
       )}
@@ -110,7 +110,7 @@ const Faqs: React.FC = () => {
   return (
     <section className="bg-white py-10">
       <div className="container xl:max-w-[1140px] mx-auto px-4">
-        <h1 className="text-primary text-2xl text-center">
+        <h1 className="text-primary text-2xl text-center sm:text-3xl md:text-4xl">
           Frequently Asked Questions (FAQs)
         </h1>
 

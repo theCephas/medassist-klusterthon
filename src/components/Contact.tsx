@@ -11,7 +11,7 @@ function Contact() {
             alt="contact"
           />
           <div className="py-5 pb-8 px-8 bg-home flex flex-col justify-center md:p-8 md:w-[70%] lg:px-16">
-            <h2 className="text-primary text-3xl capitalize text-center">
+            <h2 className="text-primary text-2xl capitalize text-center sm:text-3xl md:text-4xl">
               Get in touch
             </h2>
             <p className="text-center mt-2">

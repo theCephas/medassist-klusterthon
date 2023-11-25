@@ -1,56 +1,85 @@
-import React from "react";
-//@ts-expect-error this is a type check
-import { useSpringCarousel } from "react-spring-carousel";
+import { BsArrowLeftShort } from "react-icons/bs";
+import { BsArrowRightShort } from "react-icons/bs";
 
-interface CarouselItemProps {
-  color: string;
-  children: React.ReactNode;
+import React, { useState } from "react";
+
+interface CarouselProps {
+  images: { url: string; text: string }[];
 }
 
-const CarouselItem: React.FC<CarouselItemProps> = ({ color, children }) => {
-  return (
-    <div className={`bg-${color} p-4 rounded-md`}>
-      <p className="text-white">{children}</p>
-    </div>
-  );
-};
+const Carousel: React.FC<CarouselProps> = ({ images }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-const mockedItems = [
-  { id: 1, title: "Item 1", color: "blue" },
-  { id: 2, title: "Item 2", color: "green" },
-  { id: 3, title: "Item 3", color: "red" },
-];
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
-const Carousel = () => {
-  const { carouselFragment, slideToPrevItem, slideToNextItem } =
-    useSpringCarousel({
-      initialActiveItem: 2,
-      items: mockedItems.map((i) => ({
-        id: i.id,
-        renderItem: <CarouselItem color={i.color}>{i.title}</CarouselItem>,
-      })),
-    });
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentImageIndex(index);
+  };
 
   return (
-    <div className="bg-home mt-12 py-16">
-      <div className="container mx-auto px-4 sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px]">
-        <h1 className="text-3xl text-center text-primary mb-4">
+    <div className="bg-home py-16 pb-20">
+      <div className="container mx-auto px-4 max-w-[1140px]">
+        <h2 className="text-primary mb-10 text-2xl text-center sm:text-3xl md:text-4xl">
           Our Key Features
-        </h1>
-        <div className="">
+        </h2>
+        <div className="relative mx-auto md:w-4/5 md:mx-auto">
+          <div className="flex relative overflow-hidden rounded-md mb-5 sm:w-4/5 sm:mx-auto">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`w-full h-[200px] sm:h-[300px] ${
+                  index === currentImageIndex ? "block" : "hidden"
+                }`}
+              >
+                <img
+                  src={image.url}
+                  alt={`carousel-${index}`}
+                  className="w-full h-full"
+                />
+                <div className="absolute bg-black bg-opacity-70 inset-0 flex items-center justify-center p-8 leading-[125%] sm:px-12">
+                  <p className="text-white text-xs text-center sm:text-base">
+                    {image.text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
           <button
-            className="bg-primary text-white px-4 py-2 rounded-md mr-2"
-            onClick={slideToPrevItem}
+            className="w-10 h-10 rounded-full flex justify-center items-center absolute sm:top-1/2 transform sm:-translate-y-1/2 bg-primary border-none cursor-pointer left-0"
+            onClick={prevImage}
           >
-            Prev
+            <BsArrowLeftShort size={24} className="fill-white cursor-pointer" />
           </button>
-          <div className="flex-grow">{carouselFragment}</div>
           <button
-            className="bg-primary text-white px-4 py-2 rounded-md ml-2"
-            onClick={slideToNextItem}
+            className="w-10 h-10 rounded-full flex justify-center items-center absolute sm:top-1/2 transform sm:-translate-y-1/2 bg-primary border-none cursor-pointer right-0"
+            onClick={nextImage}
           >
-            Next
+            <BsArrowRightShort
+              size={24}
+              className="fill-white cursor-pointer"
+            />
           </button>
+          <div className="flex justify-center mt-4 absolute left-0 right-0 sm:static sm:mt-0">
+            {images.map((_, index) => (
+              <span
+                key={index}
+                className={`w-3 h-3 bg-white border border-[#62B6CB] rounded-full mx-2 cursor-pointer ${
+                  index === currentImageIndex && "bg-[#1B4965] border-[#1B4965]"
+                }`}
+                onClick={() => goToImage(index)}
+              ></span>
+            ))}
+          </div>
         </div>
       </div>
     </div>

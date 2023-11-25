@@ -16,7 +16,7 @@ const Header = () => {
   const toggleSidebar = useSidebarState((state) => state.toggleSidebar);
 
   return (
-    <div className="bg-home fixed h-20 top-0 w-full z-50 shadow-md lg:py-0">
+    <div className="bg-home fixed h-auto py-4 top-0 w-full z-50 shadow-md lg:py-0">
       <nav className="container mx-auto px-4 sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px] lg:flex h-full w-full  items-center font-medium justify-between">
         {/* Menu Btn */}
 
@@ -26,7 +26,7 @@ const Header = () => {
               onClick={() => toggleSidebar(!showSideBar)}
               className="text-3xl lg:hidden flex"
             >
-              {showSideBar ? <IoMdClose size={38} /> : <IoMdMenu size={38} />}
+              {showSideBar ? <IoMdClose size={24} /> : <IoMdMenu size={24} />}
             </button>
             <div
               onClick={() => navigate("/")}
