@@ -2,18 +2,33 @@ import axios from "axios";
 
 // const KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 export const BASEURL =
-  import.meta.env.VITE_REACT_APP_BASE_URL || "https://medication.onrender.com/api-docs";
+  import.meta.env.VITE_REACT_APP_BASE_URL ||
+  "https://medication.onrender.com/api-docs";
 
 export const api = {
   users: {
-
+    register: "/users/register",
+    login: "/users/login",
+    getprofile: "/users/profile",
+    upateprofile: "/users/profiles",
+    forgotPassword: "/users/forget-password",
+    resetPassword: (token: string) => `/users/reset-password/${token}`,
   },
-
+  admin: {
+    users: "/users/all",
+    getUser: (id: string) => `/users/${id}`,
+    patchUser: (id: string) => `users/${id}`,
+    deleteUser: (id: string) => `users/${id}`,
+  },
+  medicine: {
+    medication: (id: string) => `/medication-details/add/${id}`,
+    
+  },
 };
 
 export const makePostRequest = async (
   data: unknown,
-  url: string,
+  url: string
   // includeAuthHeader: boolean = true
 ) => {
   return await axios.post(`${BASEURL}${url}`, data, {
@@ -23,10 +38,8 @@ export const makePostRequest = async (
   });
 };
 
-
-
 export const makeDeleteRequest = async <T = unknown>(
-  url: string,
+  url: string
   // includeAuthHeader: boolean = true
 ) => {
   return await axios.delete<T>(`${BASEURL}${url}`, {
@@ -36,11 +49,9 @@ export const makeDeleteRequest = async <T = unknown>(
   });
 };
 
-
-
 export const makePostRequestWithCustomHeaders = async (
   data: unknown,
-  url: string,
+  url: string
   // headers?: unknown
 ) => {
   const temp = await fetch(`${BASEURL}${url}`, {
@@ -62,11 +73,9 @@ export const makePostRequestWithCustomHeaders = async (
   return result;
 };
 
-
-
 export const makePatchRequest = async (
   data: unknown,
-  url: string,
+  url: string
   // includeAuthHeader: boolean = true
 ) => {
   return await axios.patch(`${BASEURL}${url}`, data, {
@@ -77,7 +86,7 @@ export const makePatchRequest = async (
 };
 export const makePutRequest = async (
   data: unknown,
-  url: string,
+  url: string
   // includeAuthHeader: boolean = true
 ) => {
   return await axios.put(`${BASEURL}${url}`, data, {
@@ -88,7 +97,7 @@ export const makePutRequest = async (
 };
 
 export const makeGetRequest = async <T = unknown>(
-  url: string,
+  url: string
   // includeAuthHeaders: boolean = true
 ) => {
   const temp = await axios.get<T>(`${BASEURL}${url}`, {

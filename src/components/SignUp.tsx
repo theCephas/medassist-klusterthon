@@ -4,8 +4,8 @@ import * as yup from "yup";
 import PasswordInput from "./PasswordInput";
 import Logo from "../assets/medassist.svg";
 import { useNavigate } from "react-router-dom";
-
-// import { useUserLogin } from "@/service/hooks";
+import { useRegister } from "../services/hooks";
+import { useState } from "react";
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
@@ -21,6 +21,8 @@ interface FormValues {
 }
 
 export function SignUp() {
+  const [loading, setLoading] = useState(false)
+  const register = useRegister();
   const {
     control,
     handleSubmit,
@@ -29,8 +31,19 @@ export function SignUp() {
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
-  const onSubmit: SubmitHandler<FormValues> = () => {
-    console.log();
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    setLoading(true)
+    console.log(data)
+    register
+      .mutateAsync(data)
+      .then(() => {
+        navigate("/sign-in")
+          setLoading(false)
+      })
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .catch((err) => {
+          setLoading(false)
+      });
   };
 
   return (
@@ -40,7 +53,9 @@ export function SignUp() {
           src={Logo}
           className="w-[170px] mb-8 cursor-pointer lg:absolute lg:top-5 lg:left-20"
           alt="MedAssist Logo"
-          onClick={() => {}}
+          onClick={() => {
+            navigate("/");
+          }}
         />
 
         <div className="w-full max-w-[350px] p-8 bg-white bg-opacity-70 backdrop-blur-lg rounded-lg">
@@ -130,7 +145,30 @@ export function SignUp() {
             type="submit"
             className="bg-primary w-full p-2 mt-3 rounded-md text-white"
           >
-            Continue
+            {loading ? (
+              <svg
+                className="animate-spin h-5 w-5 text-white"
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  opacity="0.2"
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M12 19C15.866 19 19 15.866 19 12C19 8.13401 15.866 5 12 5C8.13401 5 5 8.13401 5 12C5 15.866 8.13401 19 12 19ZM12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                  fill="white"
+                />
+                <path
+                  d="M2 12C2 6.47715 6.47715 2 12 2V5C8.13401 5 5 8.13401 5 12H2Z"
+                  fill="white"
+                />
+              </svg>
+            ) : (
+              " Continue"
+            )}
           </button>
 
           <p className="my-3 text-center">
@@ -139,7 +177,6 @@ export function SignUp() {
               onClick={() => navigate("/sign-in")}
               className="text-primary cursor-pointer"
             >
-              {" "}
               Sign In
             </span>
           </p>
