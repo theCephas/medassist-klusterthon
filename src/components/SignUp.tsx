@@ -24,8 +24,6 @@ interface FormValues {
 const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 
 export function SignUp() {
-
-
   const [, setUsers] = useState({});
   //@ts-expect-error this is an auth type check
   const handleCallBackResponse = (response) => {
@@ -60,7 +58,7 @@ export function SignUp() {
     //@ts-expect-error this is an auth type check
     window.google.account?.id.prompt();
   }, []);
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
   const register = useRegister();
   const {
     control,
@@ -71,8 +69,8 @@ export function SignUp() {
   });
   const navigate = useNavigate();
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    setLoading(true)
-    console.log(data)
+    setLoading(true);
+    console.log(data);
     register
       .mutateAsync(data)
       .then(() => {
@@ -82,6 +80,7 @@ export function SignUp() {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .catch((err) => {
         setLoading(false);
+        console.log(err);
       });
   };
 
