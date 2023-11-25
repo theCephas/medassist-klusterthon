@@ -1,8 +1,10 @@
 import { useSpring, animated } from "react-spring";
+import { CiHeart } from "react-icons/ci";
 import Image1 from "../assets/image1.jpg";
 import Image2 from "../assets/image2.jpg";
 import Image3 from "../assets/image3.jpg";
 import Image4 from "../assets/image4.jpg";
+import Arrow from "../assets/arrow.png";
 
 function Section() {
   const headerAnimation = useSpring({
@@ -50,7 +52,7 @@ function Section() {
     <div className=" sm:text-center lg:text-left  pt-16 pb-16 bg-home lg:pb-0 lg:relative ">
       <div className="container mx-auto px-4 sm:max-w-[600px] md:max-w-[760px] lg:pt-16 lg:max-w-[1140px] flex flex-col  lg:flex-row lg:justify-between">
         {/* Left Side: Welcome Text, Subtext, Get Started Button */}
-        <div className="w-full sm:mx-auto md:w-3/4 lg:mx-0 lg:w-3/5  my-12 lg:my-0 lg:mb-5">
+        <div className="w-full relative sm:mx-auto md:w-3/4 lg:mx-0 lg:w-3/5  my-12 lg:my-0 lg:mb-5">
           <animated.div style={headerAnimation}>
             <h1 className="text-2xl sm:text-[30px] mb-4 text-primary leading-[125%]">
               Welcome to MedAssist - Your Personal
@@ -69,10 +71,21 @@ function Section() {
               Get Started
             </button>
           </animated.div>
+          <img
+            src={Arrow}
+            className="hidden lg:inline-block absolute right-10 top-10 scale-75"
+            alt="Arrow"
+          />
         </div>
 
         {/* Right Side: Stacked Images */}
         <div className="w-[300px] mx-auto grid grid-cols-2 gap-3 lg:w-auto lg:gap-8 lg:absolute lg:right-20">
+          <span className="hidden lg:inline-flex items-center absolute bottom-[100px] -left-16 z-20 rounded-[30px] border border-[#62B6CB] gap-3 bg-white px-2 py-2">
+            <span className="bg-[#62B6CB] p-2 rounded-full">
+              <CiHeart className="fill-white" />
+            </span>
+            <p className="text-primary text-sm pr-2">Health care</p>
+          </span>
           <animated.div style={image1Animation}>
             <img
               src={Image1}
