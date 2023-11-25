@@ -5,7 +5,8 @@ import PasswordInput from "./PasswordInput";
 import Logo from "../assets/medassist.svg";
 import { useNavigate } from "react-router-dom";
 import { useRegister } from "../services/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
@@ -20,7 +21,45 @@ interface FormValues {
   password: string;
 }
 
+const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
+
 export function SignUp() {
+
+
+  const [, setUsers] = useState({});
+  //@ts-expect-error this is an auth type check
+  const handleCallBackResponse = (response) => {
+    console.log("Encoded jwt ID token:" + response.credential);
+    const userObject = jwtDecode(response.credential);
+    setUsers(userObject);
+  };
+
+  useEffect(() => {
+    //@ts-expect-error this is an auth type check
+    window.google?.accounts.id.initialize({
+      client_id: clientID,
+      callback: handleCallBackResponse,
+    });
+    //@ts-expect-error this is an auth type check
+    window.google?.accounts.id.renderButton(
+      document.getElementById("loginBtn"),
+      {
+        theme: "#000",
+        size: "large",
+      }
+    );
+    //@ts-expect-error this is an auth type check
+    window.google.accounts.id.renderButton(
+      document.getElementById("SignUpBtn"),
+
+      {
+        theme: "outline",
+        size: "large",
+      }
+    );
+    //@ts-expect-error this is an auth type check
+    window.google.account?.id.prompt();
+  }, []);
   const [loading, setLoading] = useState(false)
   const register = useRegister();
   const {
@@ -37,12 +76,12 @@ export function SignUp() {
     register
       .mutateAsync(data)
       .then(() => {
-        navigate("/sign-in")
-          setLoading(false)
+        navigate("/sign-in");
+        setLoading(false);
       })
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .catch((err) => {
-          setLoading(false)
+        setLoading(false);
       });
   };
 
