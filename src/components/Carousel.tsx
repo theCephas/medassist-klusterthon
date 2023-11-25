@@ -74,7 +74,8 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
               <span
                 key={index}
                 className={`w-3 h-3 bg-white border border-[#62B6CB] rounded-full mx-2 cursor-pointer ${
-                  index === currentImageIndex && "bg-[#1B4965] border-[#1B4965]"
+                  index === currentImageIndex &&
+                  "bg-[#1B4965_!important] border-[#1B4965_!important]"
                 }`}
                 onClick={() => goToImage(index)}
               ></span>
