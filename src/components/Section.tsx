@@ -1,4 +1,8 @@
 import { useSpring, animated } from "react-spring";
+import Image1 from "../assets/image1.jpg";
+import Image2 from "../assets/image2.jpg";
+import Image3 from "../assets/image3.jpg";
+import Image4 from "../assets/image4.jpg";
 
 function Section() {
   const headerAnimation = useSpring({
@@ -69,14 +73,14 @@ function Section() {
           <div className="flex flex-col  space-y-6">
             <animated.div style={image1Animation}>
               <img
-                src="/src/assets/image1.jpg"
+                src={Image1}
                 alt="Image 1"
                 className="h-40 w-40 object-cover rounded"
               />
             </animated.div>
             <animated.div style={image3Animation}>
               <img
-                src="/src/assets/image3.jpg"
+                src={Image3}
                 alt="Image 2"
                 className="h-40 w-40 object-cover rounded"
               />
@@ -86,14 +90,14 @@ function Section() {
           <div className="flex flex-col space-y-6">
             <animated.div style={image2Animation}>
               <img
-                src="/src/assets/image2.jpg"
+                src={Image2}
                 alt="Image 3"
                 className="h-40 w-40 object-cover rounded"
               />
             </animated.div>
             <animated.div style={image4Animation}>
               <img
-                src="/src/assets/image4.jpg"
+                src={Image4}
                 alt="Image 4"
                 className="h-40 w-40 object-cover rounded"
               />

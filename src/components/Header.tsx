@@ -5,6 +5,7 @@ import { IoMdClose, IoMdMenu } from "react-icons/io";
 import { useState } from "react";
 import { useSidebarState } from "../services/states";
 import MainSideNav from "./MainSideNav";
+import Logo from "../assets/medassist.svg";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -31,11 +32,7 @@ const Header = () => {
               onClick={() => navigate("/")}
               className="flex items-center gap-2 cursor-pointer select-none"
             >
-              <img
-                src="/src/assets/MedAssist.jpg"
-                alt="logo"
-                className="lg:cursor-pointer h-7"
-              />
+              <img src={Logo} alt="logo" className="lg:cursor-pointer h-7" />
             </div>
           </div>
         </div>

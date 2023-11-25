@@ -1,4 +1,4 @@
-// import ContactImg from "/public/contact.jpg";
+import ContactImg from "../assets/contact.jpg";
 
 function Contact() {
   return (
@@ -6,7 +6,7 @@ function Contact() {
       <div className="container px-4 mx-auto lg:max-w-[1140px]">
         <div className="relative flex flex-col md:flex-row md:justify-end">
           <img
-            src="/src/assets/contact.jpg"
+            src={ContactImg}
             className="h-[150px] w-full object-cover md:object-center md:h-full md:w-[30%] md:absolute md:top-0 md:left-0 md:z-[1] lg:object-left"
             alt="contact"
           />

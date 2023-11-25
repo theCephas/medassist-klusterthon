@@ -1,3 +1,5 @@
+import Frame from "../assets/frame.jpg";
+
 function WhyMedAssist() {
   return (
     <section className="bg-home py-16 border-t border-primary border-opacity-50">
@@ -22,7 +24,7 @@ function WhyMedAssist() {
             </button>
           </div>
           <img
-            src="/src/assets/frame.jpg"
+            src={Frame}
             className="mt-8 md:mt-0 md:h-full lg:h-auto"
             alt="Why Choose MedAssist"
           />
