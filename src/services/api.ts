@@ -2,7 +2,7 @@ import axios from "axios";
 
 // const KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 export const BASEURL =
-  import.meta.env.VITE_REACT_APP_BASE_URL || "";
+  import.meta.env.VITE_REACT_APP_BASE_URL || "https://medication.onrender.com/api-docs";
 
 export const api = {
   users: {

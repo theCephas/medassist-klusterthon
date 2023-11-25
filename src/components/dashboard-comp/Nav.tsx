@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useSidebarState } from "../../services/states";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdOutlineClose, MdOutlineViewHeadline } from "react-icons/md";
