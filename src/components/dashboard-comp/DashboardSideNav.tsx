@@ -18,7 +18,7 @@ const DashboardSideNav = () => {
           className="flex items-center gap-2 cursor-pointer select-none"
         >
           <img
-            src="/public/MedAssist.png"
+            src="/src/assets/MedAssist.png"
             alt="logo"
             className="lg:cursor-pointer h-8"
           />

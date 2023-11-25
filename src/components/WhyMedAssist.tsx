@@ -22,7 +22,7 @@ function WhyMedAssist() {
             </button>
           </div>
           <img
-            src="/public/frame.png"
+            src="/src/assets/frame.png"
             className="mt-8 md:mt-0 md:h-full lg:h-auto"
             alt="Why Choose MedAssist"
           />

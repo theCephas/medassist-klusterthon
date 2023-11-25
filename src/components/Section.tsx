@@ -69,14 +69,14 @@ function Section() {
           <div className="flex flex-col  space-y-6">
             <animated.div style={image1Animation}>
               <img
-                src="/public/image1.png"
+                src="/src/assets/image1.png"
                 alt="Image 1"
                 className="h-40 w-40 object-cover rounded"
               />
             </animated.div>
             <animated.div style={image3Animation}>
               <img
-                src="/public/image3.png"
+                src="/src/assets/image3.png"
                 alt="Image 2"
                 className="h-40 w-40 object-cover rounded"
               />
@@ -86,14 +86,14 @@ function Section() {
           <div className="flex flex-col space-y-6">
             <animated.div style={image2Animation}>
               <img
-                src="/public/image2.png"
+                src="/src/assets/image2.png"
                 alt="Image 3"
                 className="h-40 w-40 object-cover rounded"
               />
             </animated.div>
             <animated.div style={image4Animation}>
               <img
-                src="/public/image4.png"
+                src="/src/assets/image4.png"
                 alt="Image 4"
                 className="h-40 w-40 object-cover rounded"
               />
