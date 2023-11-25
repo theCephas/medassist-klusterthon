@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { BsPlus } from "react-icons/bs";
 
 const Dashboard = () => {
   const [greeting, setGreeting] = useState<string>("");
- const [currentDate, setCurrentDate] = useState<string>("");
+  const [currentDate, setCurrentDate] = useState<string>("");
 
   useEffect(() => {
     const getCurrentDate = () => {
@@ -35,116 +35,98 @@ const Dashboard = () => {
     // Update the greeting every minute to handle cases where the component is mounted for a long time
     const interval = setInterval(() => {
       getCurrentGreeting();
-       getCurrentDate();
+      getCurrentDate();
     }, 60000);
 
     return () => clearInterval(interval);
-
-
-
-
-
-
-
-
   }, []);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 h-full p-4">
-      {/* Three cards taking 70% of the screen */}
-      <div className="col-span-1 md:col-span-2 lg:col-span-3 p-4">
-        <div className="bg-secondary h-[22%] mb-4 rounded-lg p-3 flex  justify-between">
-          <div className="flex flex-col justify-between">
-            <div className="bg-[#fff] rounded-lg w-fit px-3">
-              <span className="text-[10px] leading-[12px] text-[#130303]">
-                {currentDate}
-              </span>
+    <div className="container px-4 mx-auto sm:max-w-[600px] md:max-w-[760px] lg:max-w-[100%] lg:px-14">
+      <div className="mb-8 h-auto xl:flex xl:justify-center xl:gap-5">
+        {/* Three cards taking 70% of the screen */}
+        <div className="mt-8 md:flex md:justify-between md:flex-wrap md:gap-4">
+          <div className="bg-secondary h-auto mb-4 rounded-lg p-3 flex  justify-between md:w-full lg:mb-0">
+            <div className="flex flex-col justify-between">
+              <div className="bg-[#fff] rounded-lg w-fit px-3 mb-3">
+                <span className="text-[10px] leading-[12px] text-[#130303]">
+                  {currentDate}
+                </span>
+              </div>
+              <div>
+                <h2 className="text-primary text-[24px] leading-[30px] mb-2">
+                  {greeting}, <br /> Chinonye
+                </h2>
+                <p className="text-[12px] leading-[15px] text-primary">
+                  What would you like to do today?
+                </p>
+              </div>
             </div>
-            <div>
-              <h2 className="font-serif text-primary text-[24px] leading-[30px] font-medium">
-                {greeting}, Chinonye
-              </h2>
-              <p className="text-[12px] leading-[15px] text-primary">
-                What would you like to do today?
-              </p>
+            <div className="flex items-center">
+              <PhotoUploader />
             </div>
           </div>
-          <div className="flex items-center">
-            <PhotoUploader />
+          <div className="border-2 border-[#7C7C7C] border-dashed rounded-[10px] h-[150px] mb-4 p-5 md:w-[48%] md:mb-0 xl:h-[250px]">
+            <p className="text-[12px] text-primary leading-[15px] flex font-medium">
+              Medication management overview
+            </p>
+            <div className="flex items-center justify-center h-full">
+              <button className="flex item-center gap-1 cursor-pointer">
+                <BsPlus />{" "}
+                <span className="text-[12px] leading-[15px] font-medium text-primary">
+                  Add medications
+                </span>
+              </button>
+            </div>
+          </div>
+          <div className="border-2 border-[#7C7C7C] border-dashed rounded-[10px] h-[150px] mb-4 p-5 md:w-[48%] md:mb-0 xl:h-[250px]">
+            <p className="text-[12px] text-primary leading-[15px] flex font-medium">
+              Medication calendar - Reminders
+            </p>
+            <div className="flex items-center justify-center h-full">
+              <button className="flex item-center gap-1 cursor-pointer">
+                <BsPlus />{" "}
+                <span className="text-[12px] leading-[15px] font-medium text-primary">
+                  Add reminders
+                </span>
+              </button>
+            </div>
           </div>
         </div>
-        <div
-          style={{ border: "dashed", borderBlockColor: "gray" }}
-          className=" border-slate-50 rounded-lg h-1/4 mb-4 p-3"
-        >
-          <span className="text-[12px] leading-[15px] flex">
-            Medication management overview
-          </span>
-          <div className="flex items-center justify-center h-full">
-            <span className="flex item-center gap-1 cursor-pointer">
-              <BsPlus />{" "}
-              <span className="text-[12px] leading-[15px]">
-                Add medications
-              </span>
-            </span>
-          </div>
-        </div>
-        <div
-          style={{ border: "dashed", borderBlockColor: "gray" }}
-          className=" h-2/4 rounded-lg p-3"
-        >
-          <span className="text-[12px] leading-[15px] flex">
-            Medication calendar - Reminders
-          </span>
-          <div className="flex items-center justify-center h-full">
-            <span className="flex item-center gap-1 cursor-pointer">
-              <BsPlus />{" "}
-              <span className="text-[12px] leading-[15px]">Add reminders</span>
-            </span>
-          </div>
-        </div>
-      </div>
 
-
-      <div className="col-span-1 md:col-span-2 lg:col-span-2  p-4">
-        <div
-          style={{ border: "dashed", borderBlockColor: "gray" }}
-          className=" h-1/2 mb-4 p-3"
-        >
-          <span className="text-[12px] leading-[15px] flex">
-            Adherence tracking
-          </span>
-          <div className="flex items-center justify-center h-full">
-            <span className="flex item-center gap-1 cursor-pointer">
-              <BsPlus />{" "}
-              <span className="text-[12px] leading-[15px]">
-                Add tracking details
-              </span>
-            </span>
+        <div className="md:flex md:justify-between md:flex-wrap md:gap-4 md:mt-4 md:h-full xl:flex-col xl:w-2/5 xl:justify-start xl:gap-4 xl:mt-8">
+          <div className="border-2 border-[#7C7C7C] border-dashed rounded-[10px] h-[150px] mb-4 p-5 md:w-[48%] xl:w-full xl:mb-0 xl:gap-2 xl:h-[195px]">
+            <p className="text-[12px] text-primary leading-[15px] flex font-medium">
+              Adherence tracking
+            </p>
+            <div className="flex items-center justify-center h-full">
+              <button className="flex item-center gap-1 cursor-pointer">
+                <BsPlus />{" "}
+                <span className="text-[12px] leading-[15px] font-medium text-primary">
+                  Add tracking details
+                </span>
+              </button>
+            </div>
           </div>
-        </div>
-        <div
-          style={{ border: "dashed", borderBlockColor: "gray" }}
-          className=" h-1/2 p-3"
-        >
-          <span className="text-[12px] leading-[15px] flex">
-            Notes and instructions
-          </span>
-          <div className="flex items-center justify-center h-full">
-            <span className="flex item-center gap-1 cursor-pointer">
-              <BsPlus />{" "}
-              <span className="text-[12px] leading-[15px]">Add notes here</span>
-            </span>
+          <div className="border-2 border-[#7C7C7C] border-dashed rounded-[10px] h-[150px] mb-4 p-5 md:w-[48%] xl:w-full xl:mb-0 xl:gap-2 xl:h-[195px]">
+            <p className="text-[12px] text-primary leading-[15px] flex font-medium">
+              Notes and instructions
+            </p>
+            <div className="flex items-center justify-center h-full">
+              <button className="flex item-center gap-1 cursor-pointer">
+                <BsPlus />{" "}
+                <span className="text-[12px] leading-[15px] font-medium text-primary">
+                  Add notes here
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Dashboard
-
-
-
+export default Dashboard;
 
 const PhotoUploader = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -196,4 +178,3 @@ const PhotoUploader = () => {
     </div>
   );
 };
-

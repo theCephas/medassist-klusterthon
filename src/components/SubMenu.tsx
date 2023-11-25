@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { IconContext } from "react-icons/lib";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
@@ -13,11 +13,13 @@ const SideBarLink = styled(NavLink)`
   padding: 28px;
   height: 60px;
   padding-top: 24px;
+  transition: 300ms;
 
   &:hover {
-    color: #1b4965;
+    transform: translateX(5px);
     cursor: pointer;
   }
+
   &:active {
     color: #1b4965;
     font-weight: bold;
@@ -36,7 +38,7 @@ const SubMenu = ({ item }: { item: ISideBarLink }) => {
   const [subnav, setSubnav] = useState(false);
   const toggleSideBar = useSidebarState((state) => state.toggleSidebar);
 
-  const activeLink = `text-[#62B6CB] rounded-tl-lg rounded-bl-lg border-r-4 border-[#62B6CB] font-bold `;
+  const activeLink = `bg-primary text-white font-bold `;
 
   const showSubnav = () => setSubnav(!subnav);
 
@@ -48,7 +50,7 @@ const SubMenu = ({ item }: { item: ISideBarLink }) => {
           className={`border- ${
             location.pathname === item.url
               ? activeLink
-              : "text-font font-light hover:cursor-pointer"
+              : "text-primary font-light hover:cursor-pointer"
           }`}
           onClick={() => (item.subNav ? showSubnav() : toggleSideBar(false))}
         >

@@ -1,13 +1,9 @@
 import { BsPlus } from "react-icons/bs";
 
-
 const Reminders = () => {
   return (
-    <div className="mt-8">
-      <div
-        style={{ border: "dashed", borderBlockColor: "secondary" }}
-        className=" border-secondary h-60  rounded-lg  mb-4 p-3"
-      >
+    <div className="container px-4 mx-auto mt-8 sm:max-w-[600px] md:max-w-[760px] lg:max-w-[100%] lg:px-14">
+      <div className="border-2 border-[#7C7C7C] border-dashed rounded-[10px] h-60 mb-4 p-3">
         <span className="text-[12px] leading-[15px] flex">
           Active Reminders
         </span>
@@ -20,6 +16,6 @@ const Reminders = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Reminders
+export default Reminders;

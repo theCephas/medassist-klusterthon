@@ -1,4 +1,3 @@
-
 import { useSidebarState } from "../../services/states";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdOutlineClose, MdOutlineViewHeadline } from "react-icons/md";
@@ -11,56 +10,56 @@ const Nav = () => {
   const toggleSidebar = useSidebarState((state) => state.toggleSidebar);
 
   return (
-    <div className="  h-[80px] w-full px-10 flex items-center justify-between shadow z-50 bg-[#fff]">
-      <div className="flex lg:hidden md:block  items-center justify-center md:gap-2 xxs:gap-3">
-        <div className="lg:hidden md:block block">
-          {showSideBar ? (
-            <div
-              onClick={() => toggleSidebar(false)}
-              className=" cursor-pointer text-[#323232] "
-            >
-              <MdOutlineClose size={34} />
-            </div>
-          ) : (
-            <div
-              onClick={() => toggleSidebar(true)}
-              className=" cursor-pointer text-[#323232] "
-            >
-              <MdOutlineViewHeadline size={34} />
-            </div>
-          )}
+    <div className="w-full h-auto py-4 shadow z-50 bg-[#fff]">
+      <div className="container px-4 mx-auto flex items-center justify-between gap-2 sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px]">
+        <div className="flex lg:hidden md:block  items-center justify-between md:gap-2 2xl:gap-3">
+          <div className="lg:hidden md:block block">
+            {showSideBar ? (
+              <div
+                onClick={() => toggleSidebar(false)}
+                className=" cursor-pointer text-[#323232] "
+              >
+                <MdOutlineClose size={34} />
+              </div>
+            ) : (
+              <div
+                onClick={() => toggleSidebar(true)}
+                className=" cursor-pointer text-[#323232] "
+              >
+                <MdOutlineViewHeadline size={34} />
+              </div>
+            )}
+          </div>
         </div>
-      </div>
 
-      <div className="flex items-center justify-between w-full gap-20">
-        <div className="lg:relative lg:flex lg:items-center lg:justify-center md:hidden hidden">
-          <div className="relative">
+        <div className="flex items-center justify-end w-full gap-20 lg:justify-between">
+          <div className="relative lg:w-3/5 lg:flex lg:items-center lg:justify-center md:hidden hidden">
             <input
               type="text"
               placeholder="Search anything"
-              className="text-sm focus:outline-none active:outline-none h-9 w-[664px] bg-[#fff] rounded-lg pl-4 border"
+              className="text-sm focus:outline-none active:outline-none h-auto w-full bg-[#fff] rounded-lg p-4 pl-4 border"
             />
-            <div className="absolute top-0 right-0 mt-2 mr-2">
-              <HiOutlineSearch size={20} />
+            <div className="absolute top-4 right-5 cursor-pointer">
+              <HiOutlineSearch size={24} className="hover:stroke-primary" />
             </div>
           </div>
-        </div>
 
-        <div className=" flex gap-2 items-end">
-          <div className="flex items-center justify-center gap-4">
-            <NavButton
-              className={Dependent}
-              text={
-                <div className="flex items-center">
-                  <IoIosAdd size={23} />
-                  <p>Add Dependent</p>
-                </div>
-              }
-              path="#"
-            />
-          </div>
-          <div  className="border rounded-lg border-[#62B6CB] p-2 text-slate-600 cursor-pointer active:scale-90 ease-in-out transition-all shadow-md">
-            <RxAvatar size={24} />
+          <div className=" flex gap-2 items-center ">
+            <div className="flex items-center justify-center gap-4">
+              <NavButton
+                className={Dependent}
+                text={
+                  <div className="flex items-center p-2">
+                    <IoIosAdd size={23} />
+                    <p>Add Dependent</p>
+                  </div>
+                }
+                path="#"
+              />
+            </div>
+            <div className="border rounded-lg border-[#62B6CB] p-2 text-slate-600 cursor-pointer active:scale-90 ease-in-out transition-all shadow-md">
+              <RxAvatar size={24} />
+            </div>
           </div>
         </div>
       </div>
