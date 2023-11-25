@@ -162,7 +162,7 @@ const PhotoUploader = () => {
     <div className="flex items-center space-x-2">
       <div className="relative">
         <img
-          src={selectedImage || "/src/assets/Avatar.png"} // Provide a default avatar image
+          src={selectedImage || "/src/assets/Avatar.jpg"} // Provide a default avatar image
           alt="Avatar"
           className="w-24 h-24 rounded-full"
         />

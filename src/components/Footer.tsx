@@ -1,4 +1,4 @@
-// import LogoImg from "/public/MedAssist.png";
+
 import { GoChevronDown } from "react-icons/go";
 import { GoChevronRight } from "react-icons/go";
 import { BsFacebook } from "react-icons/bs";
@@ -11,7 +11,7 @@ function Footer() {
     <section className="py-16 bg-white border-t border-primary">
       <div className="container px-4 mx-auto lg:max-w-[1140px] flex flex-col lg:flex-row lg:flex-wrap lg:justify-between">
         <div className="mb-0">
-          <img src="/src/assets/MedAssist.png" alt="MedAssist Logo" />
+          <img src="/src/assets/MedAssist.jpg" alt="MedAssist Logo" />
 
           <ul className="inline-flex flex-col gap-5 mt-5 sm:flex-row">
             <li className="text-[#7C7C7C] cursor-pointer hover:text-primary duration-300">

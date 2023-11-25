@@ -5,7 +5,7 @@ const MidSection = () => {
         MedAssist, your all-in-one solution for seamless medication
         <br className="hidden lg:block" /> management and adherence.
       </h1>
-      <img src="/src/assets/frame2.png" alt="frame" className="mt-12 mx-auto" />
+      <img src="/src/assets/frame2.jpg" alt="frame" className="mt-12 mx-auto" />
     </div>
   );
 };
