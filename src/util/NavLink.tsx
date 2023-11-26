@@ -4,7 +4,6 @@ import { FaPersonCircleQuestion } from "react-icons/fa6";
 import { PiBooks } from "react-icons/pi";
 import { BsAlarm } from "react-icons/bs";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
-import { FaNotesMedical } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 export type SubLink = {
   name: string;
@@ -162,12 +161,6 @@ export const DashboardLink: ISideBarLink[] = [
   },
   {
     id: 7,
-    name: "Notes and Instructions",
-    url: "/notes",
-    icon: <FaNotesMedical width={"20px"} height={"20px"} />,
-  },
-  {
-    id: 8,
     name: "Healthcare Providers",
     url: "/healthcare",
     icon: <MdOutlineHealthAndSafety width={"20px"} height={"20px"} />,
