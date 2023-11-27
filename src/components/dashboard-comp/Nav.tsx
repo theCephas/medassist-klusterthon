@@ -14,7 +14,7 @@ const Nav = () => {
   const [showAddDependantModal, setShowAddDependantModal] = useState(false);
 
   return (
-    <div className="w-full h-auto py-4 shadow z-50 bg-[#fff]">
+    <div className="w-full h-auto py-4 shadow z-10 bg-[#fff]">
       <div className="container px-4 mx-auto flex items-center justify-between gap-2 sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px]">
         <div className="flex lg:hidden md:block  items-center justify-between md:gap-2 2xl:gap-3">
           <div className="lg:hidden md:block block">

@@ -16,11 +16,13 @@ const schema = yup.object().shape({
     .string()
     .required("Password is required")
     .min(8, "Password must be at least 8 characters"),
+  username: yup.string().required("Username is required"),
 });
 
 interface FormValues {
   email: string;
   password: string;
+  username: string;
 }
 // eslint-disable-next-line react-hooks/rules-of-hooks
 export function SignIn() {
@@ -36,6 +38,7 @@ export function SignIn() {
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setLoading(true);
     try {
@@ -60,7 +63,7 @@ export function SignIn() {
       // Assuming the API response contains a property like 'success'
       if (result.status === "success") {
         toast.success("Registration Successfull!");
-        setAuthenticatedUser(result.data.username);
+        setAuthenticatedUser(result.username);
         navigate("/Dashboard");
       } else {
         // Handle unsuccessful registration
@@ -128,6 +131,29 @@ export function SignIn() {
                   placeholder="Email"
                   className={`w-full p-2 rounded border px-4 border-opacity-40 ${
                     errors.email ? "border-[#a10]" : "border-font"
+                  } focus:border-primary focus:outline-none placeholder:font-inter placeholder:text-font placeholder:text-sm`}
+                />
+              )}
+            />
+            <p className="text-[#a10]">{errors.email?.message}</p>
+          </div>
+          <div className="w-full mb-5">
+            <label
+              htmlFor="username"
+              className="font-medium font-lora mb-2 inline-block"
+            >
+              Username
+            </label>
+            <Controller
+              name="username"
+              control={control}
+              render={({ field }) => (
+                <input
+                  {...field}
+                  type="text"
+                  placeholder="Username"
+                  className={`w-full p-2 rounded border px-4 border-font border-opacity-40 ${
+                    errors.username ? "border-[#a10]" : "border-font"
                   } focus:border-primary focus:outline-none placeholder:font-inter placeholder:text-font placeholder:text-sm`}
                 />
               )}

@@ -2,6 +2,7 @@ import { useSidebarState } from "../../services/states";
 import SubMenu from "../SubMenu";
 import { DashboardLink, ISideBarLink } from "../../util/NavLink";
 import { useNavigate } from "react-router-dom";
+import MedAssist from "../../assets/medassist.svg";
 
 const DashboardSideNav = () => {
   const sideBarOpen = useSidebarState((state) => state.sideBarOpen);
@@ -17,11 +18,7 @@ const DashboardSideNav = () => {
           onClick={() => navigate("/dashboard")}
           className="flex items-center gap-2 cursor-pointer select-none"
         >
-          <img
-            src="src/assets/MedAssist.svg"
-            alt="logo"
-            className="lg:cursor-pointer h-8"
-          />
+          <img src={MedAssist} alt="logo" className="lg:cursor-pointer h-8" />
         </div>
       </div>
 

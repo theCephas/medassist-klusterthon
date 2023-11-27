@@ -1,3 +1,5 @@
+import Chinonye from "../../assets/chinonye.svg";
+
 interface AddDependantProps {
   closeModal: (value: boolean) => void;
 }
@@ -5,7 +7,7 @@ interface AddDependantProps {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
   return (
-    <section className="bg-black bg-opacity-50 flex justify-center items-center h-full w-full fixed top-0 left-0 p-4">
+    <section className="z-50 bg-black bg-opacity-50 flex justify-center items-center h-full w-full fixed top-0 left-0 p-4">
       <div className="bg-white scrollbar h-[500px] overflow-x-hidden overflow-scroll rounded-[20px] w-[100%] sm:w-[500px]">
         <div className="relative flex flex-col pt-[20px] pb-[45px] items-center text-center bg-[#CAE9FFBF] p-6 overflow-hidden rounded-[20px]">
           <p className="text-[#111] text-[24px] font-[400] leading-[125%] pb-4 ">
@@ -17,15 +19,15 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
         </div>
         <img
           className="flex items-center m-auto relative bottom-10 mb-[-20px]"
-          src="../src/assets/chinonye.svg"
+          src={Chinonye}
           alt="Chinonye Svg"
         />
 
-        <form id="dependant" className="relative flex flex-col px-20">
+        <form id="dependant" className="relative flex flex-col px-8">
           <div className="mb-4 flex flex-col">
             <label
               htmlFor="fname"
-              className="mb-1 text-[16px] leading-[140%] text-[#130303] font-[600]"
+              className="mb-1 text-[13px] md:text-[16px] leading-[140%] text-[#130303] font-[600]"
             >
               First name
             </label>
@@ -39,7 +41,7 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
           <div className="mb-4 flex flex-col">
             <label
               htmlFor="lname"
-              className="mb-1 text-[16px] leading-[140%] text-[#130303] font-[600]"
+              className="mb-1 text-[13px] md:text-[16px] leading-[140%] text-[#130303] font-[600]"
             >
               Last name
             </label>
@@ -53,7 +55,7 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
           <div className="mb-4 flex flex-col">
             <label
               htmlFor="fname"
-              className="mb-1 text-[16px] leading-[140%] text-[#130303] font-[600]"
+              className="mb-1 text-[13px] md:text-[16px] leading-[140%] text-[#130303] font-[600]"
             >
               Relationship with dependant
             </label>
@@ -61,7 +63,7 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
             <select
               name="relation"
               id="relation"
-              className="px-4 py-1 w-full border border-font rounded-md focus:border-primary focus:outline-none"
+              className="px-4 text-[13px] md:text-[15px] py-1 w-full border border-font rounded-md focus:border-primary focus:outline-none"
             >
               {/* <option value="dep" selected></option> */}
               <option value="husband" selected>
@@ -77,7 +79,7 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
           <div className="mb-4 flex flex-col">
             <label
               htmlFor="fname"
-              className="mb-1 text-[16px] leading-[140%] text-[#130303] font-[600]"
+              className="mb-1 text-[13px] md:text-[16px] leading-[140%] text-[#130303] font-[600]"
             >
               Gender of dependant
             </label>
@@ -85,7 +87,7 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
             <select
               name="relation"
               id="relation"
-              className="px-4 py-1 w-full border border-font rounded-md focus:border-primary focus:outline-none"
+              className="px-4 text-[13px] md:text-[15px] py-1 w-full border border-font rounded-md focus:border-primary focus:outline-none"
             >
               <option value="Male" selected>
                 Male
@@ -97,7 +99,7 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
           <div className="mb-4 flex flex-col">
             <label
               htmlFor="lname"
-              className="mb-1 text-[16px] leading-[140%] text-[#130303] font-[600]"
+              className="mb-1 text-[13px] md:text-[16px] leading-[140%] text-[#130303] font-[600]"
             >
               Age of dependent
             </label>
@@ -109,7 +111,7 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
             />
           </div>
         </form>
-        <div className="my-5 flex justify-center gap-10 sm:gap-[120px] items-center">
+        <div className="my-5 text-[13px] md:text-[15px] flex justify-center gap-10 sm:gap-[120px] items-center">
           <button
             onClick={() => closeModal(false)}
             className="border border-[#B50000] rounded-[5px] text-[#111] flex items-center justify-center h-[42px] w-[100px] "

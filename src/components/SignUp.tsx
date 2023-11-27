@@ -171,7 +171,7 @@ export function SignUp() {
           </div>
           <div className="w-full mb-5">
             <label
-              htmlFor="email-sign-in"
+              htmlFor="username"
               className="font-medium font-lora mb-2 inline-block"
             >
               Username
