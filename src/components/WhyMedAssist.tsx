@@ -1,4 +1,5 @@
 import Frame from "../assets/frame.jpg";
+import NavButton from "./NavButton";
 
 function WhyMedAssist() {
   return (
@@ -19,9 +20,11 @@ function WhyMedAssist() {
               Ready to experience the difference? Join MedAssist today and take
               the first step toward a healthier, more organized life.
             </p>
-            <button className="bg-primary text-secondary py-2 px-12 rounded-lg mt-5 hover:bg-blue-600 text-base leading-[22.4px]">
-              Get Started
-            </button>
+            <NavButton
+              className="border border-primary h-[40px] text-sm lg:py-2 xxs:py-3 px-[30px] rounded-md text-secondary bg-primary hover:bg-secondary hover:text-primary lg:inline-block select-none tracking-wider font-medium whitespace-nowrap"
+              text="Get Started"
+              path="/sign-up"
+            />
           </div>
           <img
             src={Frame}

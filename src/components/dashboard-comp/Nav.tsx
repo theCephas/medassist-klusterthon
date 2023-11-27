@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { useSidebarState } from "../../services/states";
 import { HiOutlineSearch } from "react-icons/hi";
 import { MdOutlineClose, MdOutlineViewHeadline } from "react-icons/md";
 import NavButton from "../NavButton";
 import { IoIosAdd } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
+import AddDependant from "./AddDependant";
 
 const Nav = () => {
   const showSideBar = useSidebarState((state) => state.sideBarOpen);
   const toggleSidebar = useSidebarState((state) => state.toggleSidebar);
+
+  const [showAddDependantModal, setShowAddDependantModal] = useState(false);
 
   return (
     <div className="w-full h-auto py-4 shadow z-50 bg-[#fff]">
@@ -45,18 +49,26 @@ const Nav = () => {
           </div>
 
           <div className=" flex gap-2 items-center ">
-            <div className="flex items-center justify-center gap-4">
+            <div
+              onClick={() => {
+                setShowAddDependantModal(true);
+              }}
+              className="flex items-center justify-center gap-4"
+            >
               <NavButton
                 className={Dependent}
                 text={
                   <div className="flex items-center p-2">
                     <IoIosAdd size={23} />
-                    <p>Add Dependent</p>
+                    <button>Add Dependent</button>
                   </div>
                 }
                 path="#"
               />
             </div>
+            {showAddDependantModal && (
+              <AddDependant closeModal={setShowAddDependantModal} />
+            )}
             <div className="border rounded-lg border-[#62B6CB] p-2 text-slate-600 cursor-pointer active:scale-90 ease-in-out transition-all shadow-md">
               <RxAvatar size={24} />
             </div>
@@ -70,4 +82,4 @@ const Nav = () => {
 export default Nav;
 
 const Dependent =
-  "border border-primary text-secondary text-sm lg:py-2 xxs:py-3 px-[35px] rounded-md bg-primary hover:bg-secondary hover:text-primary transition-all duration-500 active:scale-90 select-none tracking-wider font-medium whitespace-nowrap";
+  "border border-primary text-secondary text-sm lg:py-2 xxs:py-3 px-[35px] rounded-md bg-primary transition-all duration-500 active:scale-90 select-none tracking-wider font-medium whitespace-nowrap";
