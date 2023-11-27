@@ -4,9 +4,11 @@ import * as yup from "yup";
 import PasswordInput from "./PasswordInput";
 import Logo from "../assets/medassist.svg";
 import { useNavigate } from "react-router-dom";
-import { useRegister } from "../services/hooks";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../layout/AuthContext";
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
@@ -14,24 +16,30 @@ const schema = yup.object().shape({
     .string()
     .required("Password is required")
     .min(8, "Password must be at least 8 characters"),
+  username: yup.string().required("Add a username"),
 });
 
 interface FormValues {
   email: string;
   password: string;
+  username: string;
 }
 
 const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 
 export function SignUp() {
   const [, setUsers] = useState({});
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { setAuthenticatedUser } = useAuth();
   //@ts-expect-error this is an auth type check
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleCallBackResponse = (response) => {
     console.log("Encoded jwt ID token:" + response.credential);
     const userObject = jwtDecode(response.credential);
     setUsers(userObject);
   };
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const API_URL = "https://medication.onrender.com/api/v1/users/register";
   useEffect(() => {
     //@ts-expect-error this is an auth type check
     window.google?.accounts.id.initialize({
@@ -59,7 +67,7 @@ export function SignUp() {
     window.google.account?.id.prompt();
   }, []);
   const [loading, setLoading] = useState(false);
-  const register = useRegister();
+  // const register = useRegister();
   const {
     control,
     handleSubmit,
@@ -68,20 +76,39 @@ export function SignUp() {
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setLoading(true);
-    console.log(data);
-    register
-      .mutateAsync(data)
-      .then(() => {
-        navigate("/sign-in");
-        setLoading(false);
-      })
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      .catch((err) => {
-        setLoading(false);
-        console.log(err);
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (result.status === "success") {
+        toast.success(`Registration successful!`);
+        setAuthenticatedUser(result.data.username);
+        navigate("/Dashboard");
+      } else {
+        // Handle unsuccessful registration
+        console.error("Registration failed:", result.error);
+        toast.error(`Registration failed: ${result.message}`);
+      }
+    } catch (result) {
+      console.error("Error registering:", result);
+      toast.error(`Email already exists.`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -136,6 +163,29 @@ export function SignUp() {
                   placeholder="Email"
                   className={`w-full p-2 rounded border px-4 border-font border-opacity-40 ${
                     errors.email ? "border-[#a10]" : "border-font"
+                  } focus:border-primary focus:outline-none placeholder:font-inter placeholder:text-font placeholder:text-sm`}
+                />
+              )}
+            />
+            <p className="text-[#a10]">{errors.email?.message}</p>
+          </div>
+          <div className="w-full mb-5">
+            <label
+              htmlFor="email-sign-in"
+              className="font-medium font-lora mb-2 inline-block"
+            >
+              Username
+            </label>
+            <Controller
+              name="username"
+              control={control}
+              render={({ field }) => (
+                <input
+                  {...field}
+                  type="text"
+                  placeholder="Username"
+                  className={`w-full p-2 rounded border px-4 border-font border-opacity-40 ${
+                    errors.username ? "border-[#a10]" : "border-font"
                   } focus:border-primary focus:outline-none placeholder:font-inter placeholder:text-font placeholder:text-sm`}
                 />
               )}
@@ -228,6 +278,7 @@ export function SignUp() {
           ></div>
         </form>
       </div>
+      <ToastContainer />
     </section>
   );
 }

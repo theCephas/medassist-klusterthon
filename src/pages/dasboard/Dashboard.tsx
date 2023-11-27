@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BsPlus } from "react-icons/bs";
+import { useAuth } from "../../layout/AuthContext";
+// import { AuthProvider } from "../../layout/AuthContext";
 
 const Dashboard = () => {
   const [greeting, setGreeting] = useState<string>("");
   const [currentDate, setCurrentDate] = useState<string>("");
-
+  // const [username, setUserName] = useState<string>("");
+  const { username } = useAuth();
   useEffect(() => {
     const getCurrentDate = () => {
       const options: Intl.DateTimeFormatOptions = {
@@ -40,7 +43,9 @@ const Dashboard = () => {
 
     return () => clearInterval(interval);
   }, []);
+  // setAuthenticatedUser(result.data.username)
   return (
+    // <AuthProvider>
     <div className="container px-4 mx-auto sm:max-w-[600px] md:max-w-[760px] lg:max-w-[100%] lg:px-14">
       <div className="mb-8 h-auto xl:flex xl:justify-center xl:gap-5">
         {/* Three cards taking 70% of the screen */}
@@ -54,7 +59,7 @@ const Dashboard = () => {
               </div>
               <div>
                 <h2 className="text-primary text-[24px] leading-[30px] mb-2">
-                  {greeting}, <br /> Chinonye
+                  {greeting}, <br /> {username}
                 </h2>
                 <p className="text-[12px] leading-[15px] text-primary">
                   What would you like to do today?
@@ -123,6 +128,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    // </AuthProvider>
   );
 };
 
@@ -141,6 +147,7 @@ const PhotoUploader = () => {
   };
 
   return (
+    // <AuthProvider>
     <div className="flex items-center space-x-2">
       <div className="relative">
         <img
@@ -176,5 +183,6 @@ const PhotoUploader = () => {
         />
       </div>
     </div>
+    // </AuthProvider>
   );
 };
