@@ -71,7 +71,7 @@ const AddDependant: React.FC<AddDependantProps> = ({ closeModal }) => {
               <option value="doctor">Doctor</option>
               <option value="father">Father</option>
               <option value="mother">Mother</option>
-              <option value="sibling">Siblings</option>
+              <option value="sibling">Sibling</option>
             </select>
           </div>
           <div className="mb-4 flex flex-col">
