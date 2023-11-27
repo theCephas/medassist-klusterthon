@@ -2,6 +2,7 @@ import { useSpring, animated } from "react-spring";
 import { CiHeart } from "react-icons/ci";
 import HeroImg from "../assets/hero-img.png";
 import Arrow from "../assets/arrow.png";
+import NavButton from "./NavButton";
 
 function Section() {
   const headerAnimation = useSpring({
@@ -47,9 +48,11 @@ function Section() {
             </p>
           </animated.div>
           <animated.div style={buttonAnimation}>
-            <button className="bg-primary text-home py-2 px-12 rounded-lg text-[16px] leading-[22.4px]">
-              Get Started
-            </button>
+            <NavButton
+              className="border border-primary h-[40px] text-sm lg:py-2 xxs:py-3 px-[30px] rounded-md text-secondary bg-primary hover:bg-secondary hover:text-primary lg:inline-block select-none tracking-wider font-medium whitespace-nowrap"
+              text="Get Started"
+              path="/sign-up"
+            />
           </animated.div>
           <img
             src={Arrow}
