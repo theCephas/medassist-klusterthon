@@ -4,8 +4,11 @@ import * as yup from "yup";
 import PasswordInput from "./PasswordInput";
 import Logo from "../assets/medassist.svg";
 import { useNavigate } from "react-router-dom";
-import { useUserLogin } from "../services/hooks";
+// import { useUserLogin } from "../services/hooks";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "../layout/AuthContext";
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
@@ -19,9 +22,11 @@ interface FormValues {
   email: string;
   password: string;
 }
-
+// eslint-disable-next-line react-hooks/rules-of-hooks
 export function SignIn() {
-  const login = useUserLogin();
+  const API_URL = "https://medication.onrender.com/api/v1/users/login";
+  // const login = useUserLogin();
+  const { setAuthenticatedUser } = useAuth();
   const [loading, setLoading] = useState(false);
   const {
     control,
@@ -31,19 +36,43 @@ export function SignIn() {
     resolver: yupResolver(schema),
   });
   const navigate = useNavigate();
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    setLoading(true)
-    login
-      .mutateAsync(data)
-      .then((res) => {
-        console.log(res)
-        setLoading(false)
-      })
-      .catch((err) => {
-        console.log(err)
-        setLoading(false)
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    setLoading(true);
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
+      console.log(response);
+      if (!response.ok) {
+        // throw new Error(`HTTP error! Status: ${response.message}`);
+        const errorResult = await response.json();
+        throw new Error(
+          errorResult.message || `HTTP error! Status: ${response.status}`
+        );
+      }
 
+      const result = await response.json();
+
+      // Assuming the API response contains a property like 'success'
+      if (result.status === "success") {
+        toast.success("Registration Successfull!");
+        setAuthenticatedUser(result.data.username);
+        navigate("/Dashboard");
+      } else {
+        // Handle unsuccessful registration
+        console.error("Registration failed:", result.error);
+        toast.error(result.message);
+      }
+    } catch (error) {
+      console.error("Error registering:", error);
+      toast.error(`${error}`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -174,6 +203,7 @@ export function SignIn() {
           ></div>
         </form>
       </div>
+      <ToastContainer />
     </section>
   );
 }

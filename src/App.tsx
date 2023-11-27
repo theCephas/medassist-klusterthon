@@ -3,8 +3,6 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import Home from "./pages/Home";
-// import { SignIn } from "./components/SignIn";
-// import { SignUp } from "./components/SignUp";
 import DashboardLayout from "./layout/DashboardLayout";
 import Dashboard from "./pages/dasboard/Dashboard";
 import { SignUp } from "./components/SignUp";
@@ -16,7 +14,7 @@ import MedicationMgt from "./pages/dasboard/MedicationMgt";
 import Reminders from "./pages/dasboard/Reminders";
 import HealthCare from "./components/dashboard-comp/HealthCare";
 import Notes from "./components/dashboard-comp/Notes";
-// import { WelcomeBoard } from "./components/WelcomeScreen";
+import { AuthProvider } from "./layout/AuthContext";
 
 const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 
@@ -57,40 +55,35 @@ function App() {
   }, []);
   console.log(users);
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" index element={<Home />} />
-          <Route path="/sign-in" index element={<SignIn />} />
-          <Route path="/sign-up" index element={<SignUp />} />
-          <Route path="/set-reminder" index element={<SetReminder />} />
+    <AuthProvider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" index element={<Home />} />
+            <Route path="/sign-in" index element={<SignIn />} />
+            <Route path="/sign-up" index element={<SignUp />} />
+            <Route path="/set-reminder" index element={<SetReminder />} />
 
-          <Route path="" element={<DashboardLayout />}>
-
-            <Route path="/dashboard" index element={<Dashboard />} />
-            <Route path="/reminders"  element={<Reminders />} />
-            <Route path="/medication_management"  element={<MedicationMgt />} />
-            <Route path="/adherence_tracker"  element={<AdherenceTrk />} />
-            <Route
-              path="/educational_resources"
-
-              element={<EducationalRes />}
-            />
-            <Route
-              path="/healthcare"
-
-              element={<HealthCare />}
-            />
-            <Route
-              path="/notes"
-
-              element={<Notes />}
-            />
-          </Route>
-        </Routes>
-      </div>
-      {/* <div id="loginBtn"></div> */}
-    </Router>
+            <Route path="" element={<DashboardLayout />}>
+              <Route path="/dashboard" index element={<Dashboard />} />
+              <Route path="/reminders" element={<Reminders />} />
+              <Route
+                path="/medication_management"
+                element={<MedicationMgt />}
+              />
+              <Route path="/adherence_tracker" element={<AdherenceTrk />} />
+              <Route
+                path="/educational_resources"
+                element={<EducationalRes />}
+              />
+              <Route path="/healthcare" element={<HealthCare />} />
+              <Route path="/notes" element={<Notes />} />
+            </Route>
+          </Routes>
+        </div>
+        {/* <div id="loginBtn"></div> */}
+      </Router>
+    </AuthProvider>
   );
 }
 
