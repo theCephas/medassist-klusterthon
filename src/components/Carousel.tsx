@@ -44,7 +44,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
                 <img
                   src={image.url}
                   alt={`carousel-${index}`}
-                  className="w-full h-full"
+                  className="w-full h-full object-center object-cover"
                 />
                 <div className="absolute bg-black bg-opacity-70 inset-0 flex items-center justify-center p-8 leading-[125%] sm:px-12">
                   <p className="text-white text-xs text-center sm:text-base">
