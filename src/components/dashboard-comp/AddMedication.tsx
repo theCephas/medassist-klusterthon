@@ -7,15 +7,19 @@ interface AddMedicationProps {
 const AddMedication: React.FC<AddMedicationProps> = ({ closeMed }) => {
   const [medicineNames, setMedicineNames] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filteredMedicineNames, setFilteredMedicineNames] = useState<string[]>(
+    []
+  );
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     // Fetch medicine names on component mount
     fetchMedicineNames();
   }, []);
 
-  //
   const fetchMedicineNames = async () => {
     try {
+      setLoading(true);
       const response = await fetch(
         "https://medication.onrender.com/api/v1/medication/all"
       );
@@ -24,13 +28,24 @@ const AddMedication: React.FC<AddMedicationProps> = ({ closeMed }) => {
       }
 
       const data = await response.json();
-      setMedicineNames(data.name); // Update state with medicine names
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      setMedicineNames(data.data.map((med: { name: any }) => med.name));
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching medicine names:", error);
+      setLoading(false);
     }
   };
+
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+    const searchTerm = event.target.value.toLowerCase();
+    setSearchTerm(searchTerm);
+
+    // Filter medicine names based on the search term
+    const filteredNames = medicineNames.filter((name) =>
+      name.toLowerCase().includes(searchTerm)
+    );
+    setFilteredMedicineNames(filteredNames);
   };
 
   return (
@@ -53,19 +68,22 @@ const AddMedication: React.FC<AddMedicationProps> = ({ closeMed }) => {
             className="mt-4 p-2 border rounded-md"
           />
 
-          {/* Display medicine names based on search term */}
-          <ul className="mt-4">
-            {medicineNames
-              .filter((name) =>
-                name.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-              .map((name, index) => (
-                <li key={index}>{name}</li>
-              ))}
-          </ul>
+          {/* Display filtered medicine names based on search term */}
         </div>
+        <ul className="mt-4 text-[16px] ">
+          {loading && <li>Loading...</li>}
+          {!loading &&
+            filteredMedicineNames.map((name, index) => (
+              <li key={index}>{name}</li>
+            ))}
+        </ul>
+        <p
+          onClick={() => closeMed(false)}
+          className="border border-red-500 flex justify-center items-center w-[100px] m-auto rounded-md cursor-pointer"
+        >
+          Cancel
+        </p>
       </div>
-      <p onClick={() => closeMed(false)}>Cancel</p>
     </section>
   );
 };
