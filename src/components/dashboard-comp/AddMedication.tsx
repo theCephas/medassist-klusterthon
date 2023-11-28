@@ -70,16 +70,21 @@ const AddMedication: React.FC<AddMedicationProps> = ({ closeMed }) => {
 
           {/* Display filtered medicine names based on search term */}
         </div>
-        <ul className="mt-4 text-[16px] ">
+        <ul className="mt-4 text-[16px] p-10">
           {loading && <li>Loading...</li>}
           {!loading &&
             filteredMedicineNames.map((name, index) => (
-              <li key={index}>{name}</li>
+              <li
+                key={index}
+                className="text-[13px] border-b border-gray-400 pb-4"
+              >
+                {name}
+              </li>
             ))}
         </ul>
         <p
           onClick={() => closeMed(false)}
-          className="border border-red-500 flex justify-center items-center w-[100px] m-auto rounded-md cursor-pointer"
+          className="mb-4 border border-red-500 flex justify-center items-center w-[100px] m-auto rounded-md cursor-pointer"
         >
           Cancel
         </p>
