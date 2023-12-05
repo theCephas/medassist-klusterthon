@@ -87,9 +87,10 @@ export function SignUp() {
         },
         body: JSON.stringify(data),
       });
-      console.log(response);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+      // console.log(response);
+
+      if (`${response.status}`.includes("4")) {
+        throw new Error(`Invalid Input`);
       }
 
       const result = await response.json();
@@ -98,14 +99,16 @@ export function SignUp() {
         toast.success(`Registration successful!`);
         setAuthenticatedUser(result.data.username);
         navigate("/Dashboard");
+        // console.log(response);
       } else {
         // Handle unsuccessful registration
-        console.error("Registration failed:", result.error);
+        // console.error("Registration failed:", result.error);
         toast.error(`Registration failed: ${result.message}`);
       }
-    } catch (result) {
-      console.error("Error registering:", result);
-      toast.error(`Email already exists.`);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      // console.error("Error registering:", result);
+      toast.error(`Registration failed: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -265,6 +268,7 @@ export function SignUp() {
               onClick={() => navigate("/sign-in")}
               className="text-primary cursor-pointer"
             >
+              {" "}
               Sign In
             </span>
           </p>

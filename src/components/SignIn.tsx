@@ -16,13 +16,11 @@ const schema = yup.object().shape({
     .string()
     .required("Password is required")
     .min(8, "Password must be at least 8 characters"),
-  username: yup.string().required("Username is required"),
 });
 
 interface FormValues {
   email: string;
   password: string;
-  username: string;
 }
 // eslint-disable-next-line react-hooks/rules-of-hooks
 export function SignIn() {
@@ -49,7 +47,7 @@ export function SignIn() {
         },
         body: JSON.stringify(data),
       });
-      console.log(response);
+      // console.log(response);
       if (!response.ok) {
         // throw new Error(`HTTP error! Status: ${response.message}`);
         const errorResult = await response.json();
@@ -65,9 +63,10 @@ export function SignIn() {
         toast.success("Registration Successfull!");
         setAuthenticatedUser(result.username);
         navigate("/Dashboard");
+        // console.log(result.username);
       } else {
         // Handle unsuccessful registration
-        console.error("Registration failed:", result.error);
+        // console.error("Registration failed:", result.error);
         toast.error(result.message);
       }
     } catch (error) {
@@ -131,29 +130,6 @@ export function SignIn() {
                   placeholder="Email"
                   className={`w-full p-2 rounded border px-4 border-opacity-40 ${
                     errors.email ? "border-[#a10]" : "border-font"
-                  } focus:border-primary focus:outline-none placeholder:font-inter placeholder:text-font placeholder:text-sm`}
-                />
-              )}
-            />
-            <p className="text-[#a10]">{errors.email?.message}</p>
-          </div>
-          <div className="w-full mb-5">
-            <label
-              htmlFor="username"
-              className="font-medium font-lora mb-2 inline-block"
-            >
-              Username
-            </label>
-            <Controller
-              name="username"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="text"
-                  placeholder="Username"
-                  className={`w-full p-2 rounded border px-4 border-font border-opacity-40 ${
-                    errors.username ? "border-[#a10]" : "border-font"
                   } focus:border-primary focus:outline-none placeholder:font-inter placeholder:text-font placeholder:text-sm`}
                 />
               )}

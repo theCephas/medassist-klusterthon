@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AddMedicForm from "./AddMedicForm";
 
 interface AddMedicationProps {
   closeMed: (value: boolean) => void;
@@ -11,6 +12,7 @@ const AddMedication: React.FC<AddMedicationProps> = ({ closeMed }) => {
     []
   );
   const [loading, setLoading] = useState<boolean>(false);
+  const [medModal, setMedModal] = useState(false);
 
   useEffect(() => {
     // Fetch medicine names on component mount
@@ -59,24 +61,24 @@ const AddMedication: React.FC<AddMedicationProps> = ({ closeMed }) => {
             Add to your medications
           </p>
 
-          {/* Search bar */}
-          <input
-            type="text"
-            placeholder="Search for a medication"
-            value={searchTerm}
-            onChange={handleSearch}
-            className="mt-4 p-2 border rounded-md"
-          />
-
           {/* Display filtered medicine names based on search term */}
         </div>
-        <ul className="mt-4 text-[16px] p-10">
+        {/* Search bar */}
+        <input
+          type="text"
+          placeholder="Search for a medication"
+          value={searchTerm}
+          onChange={handleSearch}
+          className="outline-none border-[#d2d3d3] flex m-auto justify-center text-[14px] mt-4 p-2 border h-[48px] w-[90%] rounded-md"
+        />
+        <ul className="mt-4 text-[16px] pt-0 p-10">
           {loading && <li>Loading...</li>}
           {!loading &&
             filteredMedicineNames.map((name, index) => (
               <li
                 key={index}
-                className="text-[13px] border-b border-gray-400 pb-4"
+                onClick={() => setMedModal(true)}
+                className="text-[13px] cursor-pointer border-b border-gray-400 py-2"
               >
                 {name}
               </li>
@@ -84,11 +86,12 @@ const AddMedication: React.FC<AddMedicationProps> = ({ closeMed }) => {
         </ul>
         <p
           onClick={() => closeMed(false)}
-          className="mb-4 border border-red-500 flex justify-center items-center w-[100px] m-auto rounded-md cursor-pointer"
+          className="mb-4 border border-red-500 flex justify-center items-center h-[40px] w-[100px] m-auto rounded-md cursor-pointer"
         >
           Cancel
         </p>
       </div>
+      {medModal && <AddMedicForm closeMedForm={setMedModal} />}
     </section>
   );
 };

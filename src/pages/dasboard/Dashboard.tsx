@@ -3,10 +3,12 @@ import { BsPlus } from "react-icons/bs";
 import { useAuth } from "../../layout/AuthContext";
 import { AuthProvider } from "../../layout/AuthContext";
 import Chinonye from "../../assets/chinonye.svg";
+import AddMedication from "../../components/dashboard-comp/AddMedication";
 
 const Dashboard = () => {
   const [greeting, setGreeting] = useState<string>("");
   const [currentDate, setCurrentDate] = useState<string>("");
+  const [medModal, setMedModal] = useState(false);
   // const [username, setUserName] = useState<string>("");
   const { username } = useAuth();
   useEffect(() => {
@@ -43,8 +45,8 @@ const Dashboard = () => {
     }, 60000);
 
     return () => clearInterval(interval);
+    // console.log(result.data.username)
   }, []);
-  // setAuthenticatedUser(result.data.username)
   return (
     <AuthProvider>
       <div className="container px-4 mx-auto sm:max-w-[600px] md:max-w-[760px] lg:max-w-[100%] lg:px-14">
@@ -78,7 +80,10 @@ const Dashboard = () => {
               <div className="flex items-center justify-center h-full">
                 <button className="flex item-center gap-1 cursor-pointer">
                   <BsPlus />{" "}
-                  <span className="text-[12px] leading-[15px] font-medium text-primary">
+                  <span
+                    onClick={() => setMedModal(true)}
+                    className="text-[12px] leading-[15px] font-medium text-primary"
+                  >
                     Add medications
                   </span>
                 </button>
@@ -128,6 +133,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        {medModal && <AddMedication closeMed={setMedModal} />}
       </div>
     </AuthProvider>
   );
