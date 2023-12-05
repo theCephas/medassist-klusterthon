@@ -65,7 +65,8 @@ const PasswordInput: React.FC<IPasswordInputProps> = ({
       <p className="text-[#a10]">{error?.message}</p>
       {isPassword && (
         <p className="text-[#C2C2C2] text-[13px] leading-[22px]">
-          Must be 8 characters long, Uppercase inclusive
+          Must be 8 characters long, Uppercase inclusive, with Special
+          characters such as @ * / etc.
         </p>
       )}
     </div>

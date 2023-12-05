@@ -17,44 +17,86 @@ const AddMedicForm: React.FC<AddMedicFormProps> = ({ closeMedForm }) => {
             Add to your medications
           </p>
         </div>
-        <div>
-          <div>
-            <p>What form is the medication?</p>
-            <p>Select the form</p>
-            <div>
-              <button>Pills</button>
-              <button>Injection</button>
-              <button>Drops</button>
-              <button>Powder</button>
-              <button>Inhaler</button>
-              <button>Others</button>
+        <div className="border border-[#d9d9d9] rounded-[6px] p-4 m-4 ">
+          <div className="border-b-2 border-[#D9D9D9] pb-5 ">
+            <p className="text-[#000] font-dmserif text-[18px] font-[400] pb-2 ">
+              What form is the medication?
+            </p>
+            <p className="font-[400] text-[#111] text-[14px] pb-3 ">
+              Select the form
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Pills
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Injection
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Drops
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Powder
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Inhaler
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Others
+              </button>
+            </div>
+          </div>
+          <div className="py-5">
+            <p className="text-[#000] font-dmserif text-[18px] font-[400] pb-2 ">
+              Duration of usage
+            </p>
+            <p className="font-[400] text-[#111] text-[14px] pb-3 ">
+              For how long will you be taking it?
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                3 days
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                5 days
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                7 days
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Others
+              </button>
             </div>
           </div>
           <div>
-            <p>Duration of usage</p>
-            <p>For how long will you be taking it?</p>
-            <div>
-              <button>3 days</button>
-              <button>5 days</button>
-              <button>7 days</button>
-              <button>Others</button>
+            <p className="text-[#000] font-dmserif text-[18px] font-[400] pb-2 ">
+              How often do you take it?
+            </p>
+            <p className="font-[400] text-[#111] text-[14px] pb-3 ">
+              What time interval do you use the drug?
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Once daily
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Twice daily
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Thrice daily
+              </button>
+              <button className="flex py-[0px] px-[24px] rounded-[100px] gap-[8px] h-[36px] hover:text-[#fff] hover:bg-[#1b4965] focus:text-[#fff] focus:bg-[#1b4965] items-center justify-center border border-[#1b4965] text-[14px] ">
+                Others
+              </button>
             </div>
           </div>
-          <div>
-            <p>How often do you take it?</p>
-            <p>What time interval do you use the drug?</p>
-            <div>
-              <button>Once daily</button>
-              <button>Twice daily</button>
-              <button>Thrice daily</button>
-              <button>Others</button>
-            </div>
-          </div>
-
+        </div>
+        <div className="flex float-right">
           <button
             onClick={() => {
               closeMedForm(false);
             }}
+            className="text-[14px] m-4 font-[500] flex w-[181px] h-[42px] bg-[#1b4965] hover:bg-[#428fbe] text-[#fcfcfc] items-center justify-center rounded-[5px] "
           >
             Save
           </button>
