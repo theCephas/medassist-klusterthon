@@ -3,12 +3,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import PasswordInput from "./PasswordInput";
 import Logo from "../assets/medassist.svg";
+import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-// import { useUserLogin } from "../services/hooks";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../layout/AuthContext";
+import { useEffect } from "react";
 
 const schema = yup.object().shape({
   email: yup.string().required("Email is required"),
@@ -22,12 +23,47 @@ interface FormValues {
   email: string;
   password: string;
 }
+
+const clientID = import.meta.env.VITE_REACT_APP_CLIENT_ID;
 // eslint-disable-next-line react-hooks/rules-of-hooks
 export function SignIn() {
+  const [, setUsers] = useState({});
   const API_URL = "https://medication.onrender.com/api/v1/users/login";
   // const login = useUserLogin();
   const { setAuthenticatedUser } = useAuth();
   const [loading, setLoading] = useState(false);
+  const { updateAuthToken } = useAuth();
+  const handleCallBackResponse = (response: { credential: string }) => {
+    console.log("Encoded jwt ID token:" + response.credential);
+    const userObject = jwtDecode(response.credential);
+    setUsers(userObject);
+  };
+  useEffect(() => {
+    //@ts-expect-error this is an auth type check
+    window.google?.accounts.id.initialize({
+      client_id: clientID,
+      callback: handleCallBackResponse,
+    });
+    //@ts-expect-error this is an auth type check
+    window.google?.accounts.id.renderButton(
+      document.getElementById("loginBtn"),
+      {
+        theme: "#000",
+        size: "large",
+      }
+    );
+    //@ts-expect-error this is an auth type check
+    window.google.accounts.id.renderButton(
+      document.getElementById("SignUpBtn"),
+
+      {
+        theme: "outline",
+        size: "large",
+      }
+    );
+    //@ts-expect-error this is an auth type check
+    window.google.account?.id.prompt();
+  }, []);
   const {
     control,
     handleSubmit,
@@ -47,7 +83,7 @@ export function SignIn() {
         },
         body: JSON.stringify(data),
       });
-      // console.log(response);
+      console.log(response);
       if (!response.ok) {
         // throw new Error(`HTTP error! Status: ${response.message}`);
         const errorResult = await response.json();
@@ -57,13 +93,14 @@ export function SignIn() {
       }
 
       const result = await response.json();
-
+      // const authToken = result.token;
       // Assuming the API response contains a property like 'success'
       if (result.status === "success") {
         toast.success("Registration Successfull!");
         setAuthenticatedUser(result.username);
+        updateAuthToken(result.token);
         navigate("/Dashboard");
-        // console.log(result.username);
+        console.log(result.token);
       } else {
         // Handle unsuccessful registration
         // console.error("Registration failed:", result.error);

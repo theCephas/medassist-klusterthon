@@ -23,7 +23,7 @@ const Aside = () => {
 
       <div className="flex flex-col lg:hidden gap-3 pr-4 px-5 mt-4">
         <NavButton className={signUpBtn} text="Sign Up" path="/sign-up" />
-        <NavButton className={loginBtn} text="Login" path="/login" />
+        <NavButton className={loginBtn} text="Login" path="/sign-in" />
       </div>
     </div>
   );

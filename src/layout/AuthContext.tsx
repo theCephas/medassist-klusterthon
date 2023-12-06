@@ -6,6 +6,8 @@ interface AuthContextProps {
 }
 
 interface AuthContextType {
+  token: string | null;
+  updateAuthToken: (authToken: string) => void;
   username: string | null;
   setAuthenticatedUser: (username: string) => void;
   logout: () => void;
@@ -15,6 +17,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<AuthContextProps> = ({ children }) => {
   const [username, setUsername] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(null);
 
   const setAuthenticatedUser = (username: string) => {
     setUsername(username);
@@ -22,10 +25,16 @@ export const AuthProvider: React.FC<AuthContextProps> = ({ children }) => {
 
   const logout = () => {
     setUsername(null);
+    setToken(null);
   };
 
+  const updateAuthToken = (token: string) => {
+    setToken(token);
+  };
   return (
-    <AuthContext.Provider value={{ username, setAuthenticatedUser, logout }}>
+    <AuthContext.Provider
+      value={{ token, updateAuthToken, username, setAuthenticatedUser, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -90,12 +90,12 @@ export function SignUp() {
       // console.log(response);
 
       if (`${response.status}`.includes("4")) {
-        throw new Error(`Invalid Input`);
+        throw new Error(`Please check your inputs`);
       }
 
       const result = await response.json();
-
-      if (result.status === "success") {
+      const authToken = result.token;
+      if (result.status === "success" && authToken) {
         toast.success(`Registration successful!`);
         setAuthenticatedUser(result.data.username);
         navigate("/Dashboard");

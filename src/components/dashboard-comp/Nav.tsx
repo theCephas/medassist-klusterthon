@@ -6,13 +6,25 @@ import NavButton from "../NavButton";
 import { IoIosAdd } from "react-icons/io";
 import { RxAvatar } from "react-icons/rx";
 import AddDependant from "./AddDependant";
+import { useAuth } from "../../layout/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const showSideBar = useSidebarState((state) => state.sideBarOpen);
   const toggleSidebar = useSidebarState((state) => state.toggleSidebar);
-
+  const [showLogOut, setShowLogOut] = useState(true);
   const [showAddDependantModal, setShowAddDependantModal] = useState(false);
+  const navigate = useNavigate();
+  const { logout } = useAuth();
 
+  const handleShowLogOut = () => {
+    setShowLogOut(!showLogOut);
+  };
+
+  const handleLogOut = () => {
+    logout();
+    navigate("/");
+  };
   return (
     <div className="w-full h-auto py-4 shadow z-10 bg-[#fff]">
       <div className="container px-4 mx-auto flex items-center justify-between gap-2 sm:max-w-[600px] md:max-w-[760px] lg:max-w-[1140px]">
@@ -69,9 +81,49 @@ const Nav = () => {
             {showAddDependantModal && (
               <AddDependant closeModal={setShowAddDependantModal} />
             )}
-            <div className="border rounded-lg border-[#62B6CB] p-2 text-slate-600 cursor-pointer active:scale-90 ease-in-out transition-all shadow-md">
+            <div
+              onClick={handleShowLogOut}
+              className="border relative rounded-lg border-[#62B6CB] p-2 text-slate-600 cursor-pointer active:scale-90 ease-in-out transition-all shadow-md"
+            >
               <RxAvatar size={24} />
             </div>
+            {showLogOut && (
+              <button
+                onClick={handleLogOut}
+                className="bg-white w-36 flex items-center gap-2 justify-center text-bleack p-5 absolute border rounded-lg border-[#62B6CB] z-30 top-12 right-[-15px] shadow-lg "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9"
+                    stroke="#1B4965"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16 17L21 12L16 7"
+                    stroke="#1B4965"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M21 12H9"
+                    stroke="#1B4965"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                Log out
+              </button>
+            )}
           </div>
         </div>
       </div>
