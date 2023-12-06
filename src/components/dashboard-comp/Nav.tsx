@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const Nav = () => {
   const showSideBar = useSidebarState((state) => state.sideBarOpen);
   const toggleSidebar = useSidebarState((state) => state.toggleSidebar);
-  const [showLogOut, setShowLogOut] = useState(true);
+  const [showLogOut, setShowLogOut] = useState(false);
   const [showAddDependantModal, setShowAddDependantModal] = useState(false);
   const navigate = useNavigate();
   const { logout } = useAuth();
